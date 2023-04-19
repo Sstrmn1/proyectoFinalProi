@@ -1,5 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import { Button, TextField } from '@mui/material';
+import './index.css';
+
 
 function App() {
   return (
@@ -9,6 +12,19 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <form className='form'>
+          <TextField label="Primer Nombre" variant="outlined" fullWidth />
+          <TextField label="Segundo Nombre" variant="outlined" fullWidth />
+          <TextField label="Primer Apellido" variant="outlined" fullWidth />
+          <TextField label="Segundo Apellido" variant="outlined" fullWidth />
+          <TextField label="Fecha de Nacimiento" type="date" variant="outlined" fullWidth />
+          <TextField label="Estado Civil" variant="outlined" fullWidth />
+          <TextField label="Padres" variant="outlined" fullWidth />
+          <TextField label="Hijos" variant="outlined" fullWidth />
+          <Button variant="contained" type="submit">
+            Submit
+          </Button>
+        </form>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -23,3 +39,4 @@ function App() {
 }
 
 export default App;
+
