@@ -1,5 +1,5 @@
 export default class Persona {
-    constructor(pNombre, sNombre, pApellido, sApellido, fecNac, estadoCivil, padres, hijos) {
+    constructor(pNombre, sNombre, pApellido, sApellido, fecNac, estadoCivil, padres, hijos, ident) {
         this.primerNombre = pNombre
         this.segundoNombre = sNombre
         this.primerApellido = pApellido
@@ -8,19 +8,20 @@ export default class Persona {
         this.estadoCivil = estadoCivil
         this.padresFamilia = padres
         this.hijos = hijos
+        this.identidad = ident
     }
 
     /**
      * Metodo encargado de mostrar el fin de la clase
      */
-    static informacionClasePerson () {
+    static informacionClasePerson() {
         return 'Esta es la clase para mostrar diferentes procesos de la clase persona'
     }
 
     /**
      * Metodo Get encargado de retornar el nombre de la persona
      */
-    get nombreCompleto () {
+    get nombreCompleto() {
         let nombreAll = ''
         if (this.primerNombre !== undefined && this.primerNombre !== null && this.primerNombre.trim() !== '') {
             nombreAll += this.primerNombre
@@ -43,7 +44,7 @@ export default class Persona {
     /**
      * Metodo GET retornar los apellidos de la persona
      */
-    get llamarApellidos () {
+    get llamarApellidos() {
         let apellidos = ''
         if (this.primerApellido !== undefined && this.primerApellido !== null && this.primerApellido.trim() !== '') {
             apellidos += this.primerApellido
