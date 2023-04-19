@@ -12,18 +12,20 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <form className='form'>
-          <TextField label="Primer Nombre" variant="outlined" fullWidth />
-          <TextField label="Segundo Nombre" variant="outlined" fullWidth />
-          <TextField label="Primer Apellido" variant="outlined" fullWidth />
-          <TextField label="Segundo Apellido" variant="outlined" fullWidth />
-          <TextField label="Fecha de Nacimiento" type="date" variant="outlined" fullWidth />
-          <TextField label="Estado Civil" variant="outlined" fullWidth />
-          <TextField label="Padres" variant="outlined" fullWidth />
-          <TextField label="Hijos" variant="outlined" fullWidth />
-          <Button variant="contained" type="submit">
-            Submit
-          </Button>
+        <form className="form">
+          <div className="form-container">
+            <TextField label="Primer Nombre" variant="outlined" fullWidth />
+            <TextField label="Segundo Nombre" variant="outlined" fullWidth />
+            <TextField label="Primer Apellido" variant="outlined" fullWidth />
+            <TextField label="Segundo Apellido" variant="outlined" fullWidth />
+            <TextField label="Fecha de Nacimiento" type="date" variant="outlined" fullWidth />
+            <TextField label="Estado Civil" variant="outlined" fullWidth />
+            <TextField label="Padres" variant="outlined" fullWidth />
+            <TextField label="Hijos" variant="outlined" fullWidth />
+            <Button variant="contained" type="submit">
+              Submit
+            </Button>
+          </div>
         </form>
         <a
           className="App-link"
