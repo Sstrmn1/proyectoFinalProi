@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, Grid } from '@mui/material';
 import './index.css';
 
 
@@ -14,14 +14,48 @@ function App() {
         </p>
         <form className="form">
           <div className="form-container">
-            <TextField label="Primer Nombre" variant="outlined" fullWidth />
-            <TextField label="Segundo Nombre" variant="outlined" fullWidth />
-            <TextField label="Primer Apellido" variant="outlined" fullWidth />
-            <TextField label="Segundo Apellido" variant="outlined" fullWidth />
-            <TextField label="Fecha de Nacimiento" type="date" variant="outlined" fullWidth />
-            <TextField label="Estado Civil" variant="outlined" fullWidth />
-            <TextField label="Padres" variant="outlined" fullWidth />
-            <TextField label="Hijos" variant="outlined" fullWidth />
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField label="Primer Nombre" variant="outlined" fullWidth InputLabelProps={{
+                  shrink: true,
+                }} />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField label="Segundo Nombre" variant="outlined" fullWidth InputLabelProps={{
+                  shrink: true,
+                }} />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField label="Primer Apellido" variant="outlined" fullWidth InputLabelProps={{
+                  shrink: true,
+                }} />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField label="Segundo Apellido" variant="outlined" fullWidth InputLabelProps={{
+                  shrink: true,
+                }} />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField label="Fecha de Nacimiento" type="date" variant="outlined" fullWidth InputLabelProps={{
+                  shrink: true,
+                }} />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField label="Estado Civil" variant="outlined" fullWidth InputLabelProps={{
+                  shrink: true,
+                }} />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField label="Padres" variant="outlined" fullWidth InputLabelProps={{
+                  shrink: true,
+                }} />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField label="Hijos" variant="outlined" fullWidth InputLabelProps={{
+                  shrink: true,
+                }} />
+              </Grid>
+            </Grid>
             <Button variant="contained" type="submit">
               Submit
             </Button>
