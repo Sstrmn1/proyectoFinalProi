@@ -26,19 +26,25 @@ function App() {
     nuevaPersona = new Persona(primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, estadoCivil, padresFamilia, hijos, identidad);
 
     console.log("Persona Registrada");
-    
+
   };
 
   function mostrarNombreCompleto() {
-    console.log(nuevaPersona.nombreCompleto);;
+    if (nuevaPersona) {
+      console.log(nuevaPersona.nombreCompleto);
+    }
   }
 
-  function mostrarApellidos(){
-    console.log(nuevaPersona.llamarApellidos);
+  function mostrarApellidos() {
+    if (nuevaPersona) {
+      console.log(nuevaPersona.llamarApellidos);
+    }
   }
 
-  function mostrarEdad(){
-    console.log(nuevaPersona.calcularEdad());
+  function mostrarEdad() {
+    if (nuevaPersona) {
+      console.log(nuevaPersona.edadPersona);
+    }
   }
 
 
@@ -113,7 +119,7 @@ function App() {
             </Grid>
 
             <Button className="form-button" variant="contained" type="submit">
-              Submit
+              Enviar
             </Button>
 
             <Button className="form-button" variant="contained" onClick={mostrarNombreCompleto} >

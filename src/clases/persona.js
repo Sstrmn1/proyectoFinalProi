@@ -13,14 +13,36 @@ export default class Persona {
 
 
 
-    calcularEdad() {
-        const hoy = new Date();
-        const fechaNacimiento = new Date(this.fechaNacimiento);
-        let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+    // calcularEdad() {
+    //     const hoy = new Date();
+    //     const fechaNacimiento = new Date(this.fechaNacimiento);
+    //     let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
 
-        const años = edad;
+    //     const años = edad;
 
-        return `${años} años`;
+    //     return `${años} años`;
+    // }
+
+    get edadPersona() {
+        let fechaDeNacimiento = new Date(this.fechaNacimiento);
+        let hoy = new Date();
+        let anios = hoy.getFullYear() - fechaDeNacimiento.getFullYear();
+        let meses = hoy.getMonth() - fechaDeNacimiento.getMonth();
+        let dias = hoy.getDate() - fechaDeNacimiento.getDate();
+        let edad = "";
+        
+        if (meses<0) {
+            meses = 12 + meses;
+            anios = anios - 1;        
+        }
+        if (dias < 0) {
+            dias = 30 + dias;
+            meses = meses - 1;
+        }
+        edad = `${anios} años, ${meses} meses, ${dias} dias`;
+
+        return edad;
+        
     }
 
 
@@ -34,7 +56,7 @@ export default class Persona {
     /**
      * Metodo Get encargado de retornar el nombre de la persona
      */
-     get nombreCompleto() {
+    get nombreCompleto() {
         let nombreAll = ''
         if (this.primerNombre !== undefined && this.primerNombre !== null && this.primerNombre.trim() !== '') {
             nombreAll += this.primerNombre
@@ -57,7 +79,7 @@ export default class Persona {
     /**
      * Metodo GET retornar los apellidos de la persona
      */
-     get llamarApellidos() {
+    get llamarApellidos() {
         let apellidos = ''
         if (this.primerApellido !== undefined && this.primerApellido !== null && this.primerApellido.trim() !== '') {
             apellidos += this.primerApellido
