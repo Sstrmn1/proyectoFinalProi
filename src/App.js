@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import { Button, TextField, Grid } from '@mui/material';
 import './index.css';
@@ -6,7 +7,9 @@ import Persona from "./clases/persona";
 
 
 function App() {
-  
+
+
+  let nuevaPersona;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,19 +23,25 @@ function App() {
     const hijos = event.target.elements.hijos.value;
     const identidad = event.target.elements.identidad.value;
 
-    const nuevaPersona = new Persona(primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, estadoCivil, padresFamilia, hijos, identidad);
-    
-    console.log(nuevaPersona);
-    console.log(nuevaPersona.calcularEdad());
+    nuevaPersona = new Persona(primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, estadoCivil, padresFamilia, hijos, identidad);
+
+    console.log("Persona Registrada");
     
   };
 
-  // const handleCalcularEdad = () => {
-  //   if (nuevaPersona) {
-  //     const edad = nuevaPersona.calcularEdad();
-  //     console.log(`La edad de la persona es ${edad} años`);
-  //   }
-  // };
+  function mostrarNombreCompleto() {
+    console.log(nuevaPersona.nombreCompleto);;
+  }
+
+  function mostrarApellidos(){
+    console.log(nuevaPersona.llamarApellidos);
+  }
+
+  function mostrarEdad(){
+    console.log(nuevaPersona.calcularEdad());
+  }
+
+
 
 
   return (
@@ -102,13 +111,24 @@ function App() {
                   autoComplete="off" name="identidad" />
               </Grid>
             </Grid>
-            <Button variant="contained" type="submit">
+
+            <Button className="form-button" variant="contained" type="submit">
               Submit
             </Button>
 
-            {/* <Button variant="contained" onClick={handleCalcularEdad}>
-              Calcular edad
-            </Button> */}
+            <Button className="form-button" variant="contained" onClick={mostrarNombreCompleto} >
+              Nombre Completo
+            </Button>
+
+            <Button className="form-button" variant="contained" onClick={mostrarApellidos}>
+              Apellidos
+            </Button>
+
+            <Button className="form-button" variant="contained" onClick={mostrarEdad}>
+              Edad
+            </Button>
+
+
           </div>
         </form>
 

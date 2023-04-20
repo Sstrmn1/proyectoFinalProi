@@ -34,7 +34,7 @@ export default class Persona {
     /**
      * Metodo Get encargado de retornar el nombre de la persona
      */
-    get nombreCompleto() {
+     get nombreCompleto() {
         let nombreAll = ''
         if (this.primerNombre !== undefined && this.primerNombre !== null && this.primerNombre.trim() !== '') {
             nombreAll += this.primerNombre
@@ -57,7 +57,7 @@ export default class Persona {
     /**
      * Metodo GET retornar los apellidos de la persona
      */
-    get llamarApellidos() {
+     get llamarApellidos() {
         let apellidos = ''
         if (this.primerApellido !== undefined && this.primerApellido !== null && this.primerApellido.trim() !== '') {
             apellidos += this.primerApellido
