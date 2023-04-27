@@ -4,12 +4,37 @@ import './App.css';
 import { Button, TextField, Grid } from '@mui/material';
 import './index.css';
 import Persona from "./clases/persona";
+import Cuenta from "./clases/cuenta";
 
 
 function App() {
 
 
   let nuevaPersona;
+  let nuevaCuenta;
+
+  function crearCuenta() {
+    let nombreTitular= window.prompt("introduzca el nombre")
+    let saldoInput = window.prompt("Introduzca saldo inicial")
+    let saldoInt = parseInt(saldoInput);
+    
+    nuevaCuenta = new Cuenta(nombreTitular, saldoInt)
+    window.alert("Cuenta creada")
+  }
+
+  function depositarDinero() {
+    let dinero = parseInt(window.prompt("introduzca dinero"))
+    nuevaCuenta.depositar(dinero)
+    
+    window.alert("Saldo "+ nuevaCuenta.saldo)
+  }
+
+  function retirarDinero() {
+    let dinero = parseInt(window.prompt("Cuanto quiere retirar?"))
+    
+    
+    window.alert(nuevaCuenta.retirar(dinero))
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -136,6 +161,22 @@ function App() {
 
 
           </div>
+        </form>
+
+        <form className="form"  >
+          <div className="form-container">
+            <Button className="form-button" variant="contained" onClick={crearCuenta}>
+              Crear cuenta
+            </Button>
+            <Button className="form-button" variant="contained" onClick={depositarDinero}>
+              Depositar
+            </Button>
+            <Button className="form-button" variant="contained" onClick={retirarDinero}>
+              Retirar
+            </Button>
+          </div>
+
+
         </form>
 
       </header>
