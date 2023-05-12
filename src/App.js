@@ -1,183 +1,112 @@
 import logo from './logo.svg';
-import React from 'react';
 import './App.css';
-import { Button, TextField, Grid } from '@mui/material';
-import './index.css';
-import Persona from "./clases/persona";
-import Cuenta from "./clases/cuenta";
+import Automovil from './clases/automovil';
+import { Button } from '@mui/material';
 
+
+
+// Instanciacion del objeto
+let nuevoAuto = new Automovil('V-12', 'XYZ-123', '2022', 'ABC123456DEF', 'Rojo', 2500, 'Sedán');
+
+// Funciones con metodos de la clase
+const handleClick = () => {
+  alert(Automovil.descripcion());
+};
+
+const actualizarAuto = () => {
+  nuevoAuto.motor = prompt("Ingrese el nuevo motor");
+  nuevoAuto.placa = prompt("Ingrese nueva placa ");
+  nuevoAuto.modelo = prompt("Ingrese el nuevo modelo ");
+  nuevoAuto.chasis = prompt("Ingrese el nuevo chasis");
+  nuevoAuto.color = prompt("Ingrese el nuevo color");
+  nuevoAuto.cilindrada = prompt("Ingrese la nueva cilindrada");
+  nuevoAuto.tipo = prompt("Ingrese nuevo tipo del auto");
+
+  mostrarDatos()
+
+}
+
+const mostrarPlaca = () => {
+  const placa = nuevoAuto.mostrarPlaca;
+  alert(`La placa del auto es: ${placa}`);
+}
+
+const mostrarTipo = () => {
+  const tipo = nuevoAuto.mostrarTipo;
+  alert(`El tipo de auto es: ${tipo}`);
+}
+
+const validarModelo = () => {
+  alert(nuevoAuto.validarModelo)
+}
+
+
+
+
+function mostrarDatos() {
+  const autoStr = Object.keys(nuevoAuto).map(function (key) {
+    return key + ': ' + nuevoAuto[key];
+  }).join('\n');
+
+  alert(autoStr);
+}
+
+function acelerarAuto() {
+  if (nuevoAuto.acelerar) {
+    nuevoAuto.acelerar();
+  }
+
+}
+
+function desacelerarAuto() {
+  if (nuevoAuto.desacelerar) {
+    nuevoAuto.desacelerar();
+  }
+
+}
+
+
+// App react
 
 function App() {
-
-
-  let nuevaPersona;
-  let nuevaCuenta;
-
-  function crearCuenta() {
-    let nombreTitular= window.prompt("introduzca el nombre")
-    let saldoInput = window.prompt("Introduzca saldo inicial")
-    let saldoInt = parseInt(saldoInput);
-    
-    nuevaCuenta = new Cuenta(nombreTitular, saldoInt)
-    window.alert("Cuenta creada")
-  }
-
-  function depositarDinero() {
-    let dinero = parseInt(window.prompt("introduzca dinero"))
-    nuevaCuenta.depositar(dinero)
-    
-    window.alert("Saldo "+ nuevaCuenta.saldo)
-  }
-
-  function retirarDinero() {
-    let dinero = parseInt(window.prompt("Cuanto quiere retirar?"))
-    
-    
-    window.alert(nuevaCuenta.retirar(dinero))
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const primerNombre = event.target.elements.primerNombre.value;
-    const segundoNombre = event.target.elements.segundoNombre.value;
-    const primerApellido = event.target.elements.primerApellido.value;
-    const segundoApellido = event.target.elements.segundoApellido.value;
-    const fechaNacimiento = event.target.elements.fechaNacimiento.value;
-    const estadoCivil = event.target.elements.estadoCivil.value;
-    const padresFamilia = event.target.elements.padresFamilia.value;
-    const hijos = event.target.elements.hijos.value;
-    const identidad = event.target.elements.identidad.value;
-
-    nuevaPersona = new Persona(primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, estadoCivil, padresFamilia, hijos, identidad);
-
-    console.log("Persona Registrada");
-
-  };
-
-  function mostrarNombreCompleto() {
-    if (nuevaPersona) {
-      console.log(nuevaPersona.nombreCompleto);
-    }
-  }
-
-  function mostrarApellidos() {
-    if (nuevaPersona) {
-      console.log(nuevaPersona.llamarApellidos);
-    }
-  }
-
-  function mostrarEdad() {
-    if (nuevaPersona) {
-      console.log(nuevaPersona.edadPersona);
-    }
-  }
-
-
 
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+
         <p>
-          Formulario
+          Examen 2do Parcial: Fabio Camacho Encinas
         </p>
-        <form className="form" onSubmit={handleSubmit} >
-          <div className="form-container" >
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField label="Primer Nombre" variant="outlined" fullWidth InputLabelProps={{
-                  shrink: true
-                }} autoComplete="off" name="primerNombre" />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField label="Segundo Nombre" variant="outlined" fullWidth InputLabelProps={{
-                  shrink: true
-                }} autoComplete="off" name="segundoNombre" />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField label="Primer Apellido" variant="outlined" fullWidth InputLabelProps={{
-                  shrink: true
-                }} autoComplete="off" name="primerApellido" />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField label="Segundo Apellido" variant="outlined" fullWidth InputLabelProps={{
-                  shrink: true
-                }} autoComplete="off" name="segundoApellido" />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField label="Fecha de Nacimiento" type="date" variant="outlined" fullWidth InputLabelProps={{
-                  shrink: true
-                }} autoComplete="off" name="fechaNacimiento" />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField label="Estado Civil" variant="outlined" fullWidth InputLabelProps={{
-                  shrink: true
-                }} autoComplete="off" name="estadoCivil" />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField label="Padres" variant="outlined" fullWidth InputLabelProps={{
-                  shrink: true
-                }} autoComplete="off" name="padresFamilia" />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField label="Hijos" variant="outlined" fullWidth InputLabelProps={{
-                  shrink: true
-                }} autoComplete="off" name="hijos" />
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <TextField
-                  label="ID"
-                  variant="outlined"
-                  fullWidth
-                  InputLabelProps={{ shrink: true }}
-                  inputProps={{
-                    pattern: "[0-9]*",
-                    onKeyPress: (event) => {
-                      if (!/[0-9]/.test(event.key)) {
-                        event.preventDefault();
-                      }
-                    },
-                  }}
-                  autoComplete="off" name="identidad" />
-              </Grid>
-            </Grid>
+        <p>
+          Objeto y clase automovil 🚗 🏁
+        </p>
 
-            <Button className="form-button" variant="contained" type="submit">
-              Enviar
-            </Button>
+        <Button style={{ margin: "10px" }} variant="contained" onClick={handleClick}>
+          Descripción
+        </Button>
 
-            <Button className="form-button" variant="contained" onClick={mostrarNombreCompleto} >
-              Nombre Completo
-            </Button>
-
-            <Button className="form-button" variant="contained" onClick={mostrarApellidos}>
-              Apellidos
-            </Button>
-
-            <Button className="form-button" variant="contained" onClick={mostrarEdad}>
-              Edad
-            </Button>
+        <Button style={{ margin: "10px" }} variant="contained" onClick={mostrarDatos}>
+          Mostrar datos del auto
+        </Button>
 
 
-          </div>
-        </form>
+        <Button style={{ margin: "10px" }} variant="contained" onClick={actualizarAuto}>
+          Actualizar auto
+        </Button>
 
-        <form className="form"  >
-          <div className="form-container">
-            <Button className="form-button" variant="contained" onClick={crearCuenta}>
-              Crear cuenta
-            </Button>
-            <Button className="form-button" variant="contained" onClick={depositarDinero}>
-              Depositar
-            </Button>
-            <Button className="form-button" variant="contained" onClick={retirarDinero}>
-              Retirar
-            </Button>
-          </div>
+        <Button style={{ margin: "10px" }} variant="contained" onClick={acelerarAuto}>
+          Acelerar
+        </Button>
 
+        <Button style={{ margin: "10px" }} variant="contained" onClick={desacelerarAuto}>
+          Desacelerar
+        </Button>
 
-        </form>
+        <Button style={{ margin: "10px" }} variant="contained" color="primary" onClick={mostrarPlaca}>Mostrar Placa</Button>
+        <Button style={{ margin: "10px" }} variant="contained" color="primary" onClick={mostrarTipo}>Mostrar Tipo</Button>
+        <Button style={{ margin: "10px" }} variant="contained" color="primary" onClick={validarModelo}>Validar Modelo</Button>
+
 
       </header>
     </div>
@@ -185,4 +114,3 @@ function App() {
 }
 
 export default App;
-
