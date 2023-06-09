@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* MUI */
+
+.MuiTextField-root label,
+.MuiTextField-root input,
+.MuiButton-root {
+  color: white;
+}
+
+.MuiTextField-root .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.5);
+} 
+
+.MuiTextField-root {
+  margin-bottom: 1.5rem;
+}
+
+.MuiTextField-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #90caf9;
+}
+
+.form-container {
+  padding: 3rem;
+}
+
+.form-container .form-button {
+  margin-left : 2rem;
+  margin-right: 2rem;
+}

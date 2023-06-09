@@ -1,37 +1,59 @@
 export default class Docente {
   constructor(
-    codDocente,
+    codigoDocente,
     primerNombre,
     segundoNombre,
     primerApellido,
     segundoApellido,
-    estudios
+    genero,
+    fechaNacimiento,
+    profesion,
+    tipoGrado
   ) {
-    this._codDocente = codDocente;
+    this._codigoDocente = codigoDocente;
     this._primerNombre = primerNombre;
     this._segundoNombre = segundoNombre;
     this._primerApellido = primerApellido;
     this._segundoApellido = segundoApellido;
-    this._estudios = estudios;
+    this._genero = genero;
+    this._fechaNacimiento = fechaNacimiento;
+    this._profesion = profesion;
+    this._tipoGrado = tipoGrado;
   }
 
-  set codDocente(codDocente) {
-    this._codDocente = codDocente;
+  set codigoDocente(codigo) {
+    this._codigoDocente = codigo;
   }
 
-  set primerNombre(primerNombre) {
-    this._primerNombre = primerNombre;
+  set primerNombre(nombre) {
+    this._primerNombre = nombre;
   }
-  set segundoNombre(segundoNombre) {
-    this._segundoNombre = segundoNombre;
+
+  set segundoNombre(nombre) {
+    this._segundoNombre = nombre;
   }
-  set primerApellido(primerApellido) {
-    this._primerApellido = primerApellido;
+
+  set primerApellido(apellido) {
+    this._primerApellido = apellido;
   }
-  set segundoApellido(segundoApellido) {
-    this._segundoApellido = segundoApellido;
+
+  set segundoApellido(apellido) {
+    this._segundoApellido = apellido;
   }
-  set estudios(estudios) {
-    this._estudios = estudios;
+
+  set genero(genero) {
+    this._genero = genero;
+  }
+
+  set fechaNacimiento(fecha) {
+    this._fechaNacimiento = fecha;
+  }
+
+  set profesion(profesion) {
+    this._profesion = profesion;
+  }
+
+  set tipoGrado(grado) {
+    this._tipoGrado = grado;
   }
 }
