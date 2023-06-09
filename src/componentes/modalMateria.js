@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import Materia from "../clases/materia";
 import { Button, TextField, Modal, MenuItem } from "@mui/material";
 
-const ModalMateria = ({ open, handleClose, handleAccept }) => {
+const ModalMateria = ({ open, handleClose, addMateria }) => {
   const [codigoMateria, setCodigoMateria] = useState("");
   const [nombreMateria, setNombreMateria] = useState("");
   const [semestre, setSemestre] = useState("");
@@ -26,6 +27,19 @@ const ModalMateria = ({ open, handleClose, handleAccept }) => {
 
   const handleDocenteChange = (event) => {
     setDocente(event.target.value);
+  };
+
+  const handleAccept = function () {
+    const materia = new Materia(
+      codigoMateria,
+      nombreMateria,
+      semestre,
+      carrera,
+      docente
+    );
+    addMateria(materia);
+
+    handleClose();  
   };
 
   return (

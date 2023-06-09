@@ -54,11 +54,16 @@ function App() {
     semestres.push(semestre);
   };
 
-  const handleAcceptMateria = (materia) => {
-    materias.push(materia);
+  const addMateria = function (materia) {
     console.log(materias);
-    handleCloseModalMateria();
+    materias.push(materia);
   };
+
+  // const handleAcceptMateria = (materia) => {
+  //   materias.push(materia);
+  //   console.log(materias);
+  //   handleCloseModalMateria();
+  // };
 
   return (
     <div className="App">
@@ -78,7 +83,7 @@ function App() {
         <ModalMateria
           open={openModalMateria}
           handleClose={handleCloseModalMateria}
-          handleAccept={handleAcceptMateria}
+          addMateria={addMateria}
         />
 
         <Button variant="contained" onClick={handleOpenModalCarrera}>
