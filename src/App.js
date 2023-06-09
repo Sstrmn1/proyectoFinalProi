@@ -1,26 +1,9 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Checkbox,
-  RadioGroup,
-  TextField,
-  Table,
-  Tooltip,
-  Modal,
-  Alert,
-  DatePicker,
-  TimePicker,
-  Snackbar,
-  MenuItem,
-} from "@mui/material";
+import { Button } from "@mui/material";
 import ModalSemestre from "./componentes/modalSemestre";
 import ModalMateria from "./componentes/modalMateria";
 import ModalCarrera from "./componentes/modalCarrera";
 import ModalDocente from "./componentes/modalDocente";
-import Carrera from "./clases/carrera";
-import Docente from "./clases/docente";
-import Materia from "./clases/materia";
-import Semestre from "./clases/semestre";
 
 import "./App.css";
 
@@ -35,10 +18,7 @@ function App() {
   const [openModalCarrera, setOpenModalCarrera] = useState(false);
   const [openModalDocente, setOpenModalDocente] = useState(false);
 
-
-
   const handleOpenModalSemestre = () => {
-    console.log(semestres);
     setOpenModalSemestre(true);
   };
 
@@ -54,24 +34,30 @@ function App() {
     setOpenModalMateria(false);
   };
 
-  const handleOpenModalCarrera = function () {
+  const handleOpenModalCarrera = () => {
     setOpenModalCarrera(true);
   };
 
-  const handleCloseModalCarrera = function () {
+  const handleCloseModalCarrera = () => {
     setOpenModalCarrera(false);
   };
 
-  const handleOpenModalDocente = function () {
+  const handleOpenModalDocente = () => {
     setOpenModalDocente(true);
   };
 
-  const handleCloseModalDocente = function () {
+  const handleCloseModalDocente = () => {
     setOpenModalDocente(false);
   };
 
   const addSemestre = (semestre) => {
     semestres.push(semestre);
+  };
+
+  const handleAcceptMateria = (materia) => {
+    materias.push(materia);
+    console.log(materias);
+    handleCloseModalMateria();
   };
 
   return (
@@ -89,17 +75,27 @@ function App() {
         <Button variant="contained" onClick={handleOpenModalMateria}>
           Registrar Materia
         </Button>
-        <ModalMateria open={openModalMateria} handleClose={handleCloseModalMateria} />
+        <ModalMateria
+          open={openModalMateria}
+          handleClose={handleCloseModalMateria}
+          handleAccept={handleAcceptMateria}
+        />
 
         <Button variant="contained" onClick={handleOpenModalCarrera}>
           Registrar Carrera
         </Button>
-        <ModalCarrera open={openModalCarrera} handleClose={handleCloseModalCarrera} />
+        <ModalCarrera
+          open={openModalCarrera}
+          handleClose={handleCloseModalCarrera}
+        />
 
         <Button variant="contained" onClick={handleOpenModalDocente}>
           Registrar Docente
         </Button>
-        <ModalDocente open={openModalDocente} handleClose={handleCloseModalDocente} />
+        <ModalDocente
+          open={openModalDocente}
+          handleClose={handleCloseModalDocente}
+        />
 
         {/* Resto del código... */}
       </header>
