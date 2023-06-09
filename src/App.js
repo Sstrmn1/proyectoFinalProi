@@ -22,8 +22,9 @@ import Docente from "./clases/docente";
 import Materia from "./clases/materia";
 import Semestre from "./clases/semestre";
 
-
 import "./App.css";
+
+let semestres = [];
 
 function App() {
   const [openModalSemestre, setOpenModalSemestre] = useState(false);
@@ -31,12 +32,12 @@ function App() {
   const [openModal3, setOpenModal3] = useState(false);
   const [openModal4, setOpenModal4] = useState(false);
 
-  let semestres = []
-  let carreras = []
-  let materias = []
-  let docentes = []
+  let carreras = [];
+  let materias = [];
+  let docentes = [];
 
   const handleOpenModalSemestre = () => {
+    console.log(semestres);
     setOpenModalSemestre(true);
   };
 
@@ -68,13 +69,21 @@ function App() {
     setOpenModal4(false);
   };
 
+  const addSemestre = (semestre) => {
+    semestres.push(semestre);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         <Button variant="contained" onClick={handleOpenModalSemestre}>
           Registrar Semestre
         </Button>
-        <ModalSemestre open={openModalSemestre} handleClose={handleCloseModalSemestre} />
+        <ModalSemestre
+          open={openModalSemestre}
+          handleClose={handleCloseModalSemestre}
+          addSemestre={addSemestre}
+        />
 
         <Button variant="contained" onClick={handleOpenModal2}>
           Registrar Materia
