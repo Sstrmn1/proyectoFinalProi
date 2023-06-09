@@ -25,6 +25,9 @@ import Semestre from "./clases/semestre";
 import "./App.css";
 
 let semestres = [];
+let carreras = [];
+let materias = [];
+let docentes = [];
 
 function App() {
   const [openModalSemestre, setOpenModalSemestre] = useState(false);
@@ -32,9 +35,7 @@ function App() {
   const [openModal3, setOpenModal3] = useState(false);
   const [openModal4, setOpenModal4] = useState(false);
 
-  let carreras = [];
-  let materias = [];
-  let docentes = [];
+
 
   const handleOpenModalSemestre = () => {
     console.log(semestres);
