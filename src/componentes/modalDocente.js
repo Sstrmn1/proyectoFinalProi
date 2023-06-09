@@ -17,7 +17,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
 
 // import dayjs from "dayjs";
 
-const Modal4 = function ({ open, handleClose }) {
+const ModalDocente = function ({ open, handleClose }) {
   return (
     // <div className="form-container">
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -159,4 +159,4 @@ const Modal4 = function ({ open, handleClose }) {
   );
 };
 
-export default Modal4;
+export default ModalDocente;

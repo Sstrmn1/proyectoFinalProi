@@ -14,9 +14,9 @@ import {
   MenuItem,
 } from "@mui/material";
 import ModalSemestre from "./componentes/modalSemestre";
-import Modal2 from "./componentes/modal2";
-import Modal3 from "./componentes/modal3";
-import Modal4 from "./componentes/modal4";
+import ModalMateria from "./componentes/modalMateria";
+import ModalCarrera from "./componentes/modalCarrera";
+import ModalDocente from "./componentes/modalDocente";
 import Carrera from "./clases/carrera";
 import Docente from "./clases/docente";
 import Materia from "./clases/materia";
@@ -31,9 +31,9 @@ let docentes = [];
 
 function App() {
   const [openModalSemestre, setOpenModalSemestre] = useState(false);
-  const [openModal2, setOpenModal2] = useState(false);
-  const [openModal3, setOpenModal3] = useState(false);
-  const [openModal4, setOpenModal4] = useState(false);
+  const [openModalMateria, setOpenModalMateria] = useState(false);
+  const [openModalCarrera, setOpenModalCarrera] = useState(false);
+  const [openModalDocente, setOpenModalDocente] = useState(false);
 
 
 
@@ -46,28 +46,28 @@ function App() {
     setOpenModalSemestre(false);
   };
 
-  const handleOpenModal2 = () => {
-    setOpenModal2(true);
+  const handleOpenModalMateria = () => {
+    setOpenModalMateria(true);
   };
 
-  const handleCloseModal2 = () => {
-    setOpenModal2(false);
+  const handleCloseModalMateria = () => {
+    setOpenModalMateria(false);
   };
 
-  const handleOpenModal3 = function () {
-    setOpenModal3(true);
+  const handleOpenModalCarrera = function () {
+    setOpenModalCarrera(true);
   };
 
-  const handleCloseModal3 = function () {
-    setOpenModal3(false);
+  const handleCloseModalCarrera = function () {
+    setOpenModalCarrera(false);
   };
 
-  const handleOpenModal4 = function () {
-    setOpenModal4(true);
+  const handleOpenModalDocente = function () {
+    setOpenModalDocente(true);
   };
 
-  const handleCloseModal4 = function () {
-    setOpenModal4(false);
+  const handleCloseModalDocente = function () {
+    setOpenModalDocente(false);
   };
 
   const addSemestre = (semestre) => {
@@ -86,20 +86,20 @@ function App() {
           addSemestre={addSemestre}
         />
 
-        <Button variant="contained" onClick={handleOpenModal2}>
+        <Button variant="contained" onClick={handleOpenModalMateria}>
           Registrar Materia
         </Button>
-        <Modal2 open={openModal2} handleClose={handleCloseModal2} />
+        <ModalMateria open={openModalMateria} handleClose={handleCloseModalMateria} />
 
-        <Button variant="contained" onClick={handleOpenModal3}>
+        <Button variant="contained" onClick={handleOpenModalCarrera}>
           Registrar Carrera
         </Button>
-        <Modal3 open={openModal3} handleClose={handleCloseModal3} />
+        <ModalCarrera open={openModalCarrera} handleClose={handleCloseModalCarrera} />
 
-        <Button variant="contained" onClick={handleOpenModal4}>
+        <Button variant="contained" onClick={handleOpenModalDocente}>
           Registrar Docente
         </Button>
-        <Modal4 open={openModal4} handleClose={handleCloseModal4} />
+        <ModalDocente open={openModalDocente} handleClose={handleCloseModalDocente} />
 
         {/* Resto del código... */}
       </header>

@@ -1,11 +1,11 @@
 import React from "react";
 import { Button, TextField, Modal, MenuItem } from "@mui/material";
 
-const Modal2 = ({ open, handleClose }) => {
+const ModalMateria = ({ open, handleClose }) => {
   return (
     <Modal open={open} onClose={handleClose}>
       <div className="modal-container">
-        <h2>Modal 2 de ejemplo</h2>
+        <h2>Registrar materia</h2>
         <div>
           <label htmlFor="codigoMateria">Código de la materia</label>
           <TextField id="codigoMateria" variant="outlined" />
@@ -51,4 +51,4 @@ const Modal2 = ({ open, handleClose }) => {
   );
 };
 
-export default Modal2;
+export default ModalMateria;

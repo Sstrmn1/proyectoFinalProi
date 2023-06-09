@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, TextField, Modal } from "@mui/material";
 
-const Modal3 = function ({ open, handleClose }) {
+const ModalCarrera = function ({ open, handleClose }) {
   return (
     <Modal open={open} onClose={handleClose}>
       <div className="modal-container">
@@ -29,4 +29,4 @@ const Modal3 = function ({ open, handleClose }) {
   );
 };
 
-export default Modal3;
+export default ModalCarrera;
