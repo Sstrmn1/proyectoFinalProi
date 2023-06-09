@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
   TextField,
@@ -14,27 +14,108 @@ import {
 } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
+import Docente from "../clases/docente";
 
-// import dayjs from "dayjs";
+const ModalDocente = ({ open, handleClose, addDocente }) => {
+  const [codigoDocente, setCodigoDocente] = useState("");
+  const [primerNombre, setPrimerNombre] = useState("");
+  const [segundoNombre, setSegundoNombre] = useState("");
+  const [primerApellido, setPrimerApellido] = useState("");
+  const [segundoApellido, setSegundoApellido] = useState("");
+  const [genero, setGenero] = useState("female");
+  const [fechaNacimiento, setFechaNacimiento] = useState(null);
+  const [profesion, setProfesion] = useState("");
+  const [licenciatura, setLicenciatura] = useState(false);
+  const [diplomado, setDiplomado] = useState(false);
+  const [maestria, setMaestria] = useState(false);
+  const [phd, setPhd] = useState(false);
 
-const ModalDocente = function ({ open, handleClose }) {
+  const handleCodigoDocenteChange = (event) => {
+    setCodigoDocente(event.target.value);
+  };
+
+  const handlePrimerNombreChange = (event) => {
+    setPrimerNombre(event.target.value);
+  };
+
+  const handleSegundoNombreChange = (event) => {
+    setSegundoNombre(event.target.value);
+  };
+
+  const handlePrimerApellidoChange = (event) => {
+    setPrimerApellido(event.target.value);
+  };
+
+  const handleSegundoApellidoChange = (event) => {
+    setSegundoApellido(event.target.value);
+  };
+
+  const handleGeneroChange = (event) => {
+    setGenero(event.target.value);
+  };
+
+  const handleFechaNacimientoChange = (date) => {
+    setFechaNacimiento(date);
+  };
+
+  const handleProfesionChange = (event) => {
+    setProfesion(event.target.value);
+  };
+
+  const handleLicenciaturaChange = (event) => {
+    setLicenciatura(event.target.checked);
+  };
+
+  const handleDiplomadoChange = (event) => {
+    setDiplomado(event.target.checked);
+  };
+
+  const handleMaestriaChange = (event) => {
+    setMaestria(event.target.checked);
+  };
+
+  const handlePhdChange = (event) => {
+    setPhd(event.target.checked);
+  };
+
+  const handleAccept = () => {
+    const docente = new Docente(
+      codigoDocente,
+      primerNombre,
+      segundoNombre,
+      primerApellido,
+      segundoApellido,
+      genero,
+      fechaNacimiento,
+      profesion,
+      licenciatura,
+      diplomado,
+      maestria,
+      phd
+    );
+
+    addDocente(docente);
+
+    handleClose();
+  };
+
   return (
-    // <div className="form-container">
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Modal open={open} onClose={handleClose}>
-        <div className="modal-container">
+    <Modal open={open} onClose={handleClose}>
+      <div className="modal-container">
+        <h2>Registro de docente</h2>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Grid container spacing={2}>
-            <h2>Registro de docente</h2>
             <Grid item xs={12}>
               <TextField
-                label="Codigo de docente"
+                label="Código de docente"
                 variant="outlined"
                 fullWidth
                 InputLabelProps={{
                   shrink: true,
                 }}
                 autoComplete="off"
-                id="codigoDeDocente"
+                value={codigoDocente}
+                onChange={handleCodigoDocenteChange}
               />
             </Grid>
             <Grid item xs={6}>
@@ -46,7 +127,8 @@ const ModalDocente = function ({ open, handleClose }) {
                   shrink: true,
                 }}
                 autoComplete="off"
-                id="primerNombre"
+                value={primerNombre}
+                onChange={handlePrimerNombreChange}
               />
             </Grid>
             <Grid item xs={6}>
@@ -58,7 +140,8 @@ const ModalDocente = function ({ open, handleClose }) {
                   shrink: true,
                 }}
                 autoComplete="off"
-                name="segundoNombre"
+                value={segundoNombre}
+                onChange={handleSegundoNombreChange}
               />
             </Grid>
             <Grid item xs={6}>
@@ -70,7 +153,8 @@ const ModalDocente = function ({ open, handleClose }) {
                   shrink: true,
                 }}
                 autoComplete="off"
-                name="primerApellido"
+                value={primerApellido}
+                onChange={handlePrimerApellidoChange}
               />
             </Grid>
             <Grid item xs={6}>
@@ -82,14 +166,15 @@ const ModalDocente = function ({ open, handleClose }) {
                   shrink: true,
                 }}
                 autoComplete="off"
-                name="segundoApellido"
+                value={segundoApellido}
+                onChange={handleSegundoApellidoChange}
               />
             </Grid>
             <Grid item xs={6}>
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue="female"
-                name="radio-buttons-group"
+                value={genero}
+                onChange={handleGeneroChange}
               >
                 <FormControlLabel
                   value="female"
@@ -113,36 +198,68 @@ const ModalDocente = function ({ open, handleClose }) {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                label="Fechan Nacimiento"
+                label="Fecha de nacimiento"
+                value={fechaNacimiento}
+                onChange={handleFechaNacimientoChange}
               />
             </Grid>
             <Grid item xs={6}>
-              <label>Profesion</label>
+              <label>Profesión</label>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={1}
-                label="Age"
-                onChange={1}
+                value={profesion}
+                label="Profesión"
+                onChange={handleProfesionChange}
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                <MenuItem value="Ten">Ten</MenuItem>
+                <MenuItem value="Twenty">Twenty</MenuItem>
+                <MenuItem value="Thirty">Thirty</MenuItem>
               </Select>
             </Grid>
             <Grid item xs={6}>
               <FormGroup>
                 <FormControlLabel
-                  control={<Checkbox defaultChecked />}
+                  control={
+                    <Checkbox
+                      checked={licenciatura}
+                      onChange={handleLicenciaturaChange}
+                    />
+                  }
                   label="Licenciatura"
                 />
-                <FormControlLabel control={<Checkbox />} label="Diplomado" />
-                <FormControlLabel control={<Checkbox />} label="Maestría" />
-                <FormControlLabel control={<Checkbox />} label="PhD" />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={diplomado}
+                      onChange={handleDiplomadoChange}
+                    />
+                  }
+                  label="Diplomado"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={maestria}
+                      onChange={handleMaestriaChange}
+                    />
+                  }
+                  label="Maestría"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox checked={phd} onChange={handlePhdChange} />
+                  }
+                  label="PhD"
+                />
               </FormGroup>
             </Grid>
             <Grid item xs={6}>
-              <Button variant="contained" color="primary">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleAccept}
+              >
                 Aceptar
               </Button>
             </Grid>
@@ -152,10 +269,9 @@ const ModalDocente = function ({ open, handleClose }) {
               </Button>
             </Grid>
           </Grid>
-        </div>
-      </Modal>
-    </LocalizationProvider>
-    // </div>
+        </LocalizationProvider>
+      </div>
+    </Modal>
   );
 };
 

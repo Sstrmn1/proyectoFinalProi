@@ -59,6 +59,16 @@ function App() {
     materias.push(materia);
   };
 
+  const addCarrera = function (carrera) {
+    carreras.push(carrera);
+    console.log(carreras);
+  };
+
+  const addDocente = function (docente) {
+    docentes.push(docente);
+    console.log(docentes);
+  };
+
   // const handleAcceptMateria = (materia) => {
   //   materias.push(materia);
   //   console.log(materias);
@@ -92,6 +102,7 @@ function App() {
         <ModalCarrera
           open={openModalCarrera}
           handleClose={handleCloseModalCarrera}
+          addCarrera={addCarrera}
         />
 
         <Button variant="contained" onClick={handleOpenModalDocente}>
@@ -100,6 +111,7 @@ function App() {
         <ModalDocente
           open={openModalDocente}
           handleClose={handleCloseModalDocente}
+          addDocente={addDocente}
         />
 
         {/* Resto del código... */}
