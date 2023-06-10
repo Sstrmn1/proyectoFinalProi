@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Materia from "../clases/materia";
 import { Button, TextField, Modal, MenuItem } from "@mui/material";
+import { docentes } from "../App";
 
-const ModalMateria = ({ open, handleClose, addMateria }) => {
+const ModalMateria = ({ open, handleClose, addMateria, docentes }) => {
   const [codigoMateria, setCodigoMateria] = useState("");
   const [nombreMateria, setNombreMateria] = useState("");
   const [semestre, setSemestre] = useState("");
@@ -39,7 +40,7 @@ const ModalMateria = ({ open, handleClose, addMateria }) => {
     );
     addMateria(materia);
 
-    handleClose();  
+    handleClose();
   };
 
   return (
@@ -101,9 +102,14 @@ const ModalMateria = ({ open, handleClose, addMateria }) => {
             value={docente}
             onChange={handleDocenteChange}
           >
-            <MenuItem value="docente1">Docente 1</MenuItem>
-            <MenuItem value="docente2">Docente 2</MenuItem>
-            <MenuItem value="docente3">Docente 3</MenuItem>
+            {docentes.map((docente) => (
+              <MenuItem
+                key={docente._codigoDocente}
+                value={docente._codigoDocente}
+              >
+                {docente._primerNombre} {docente._primerApellido}
+              </MenuItem>
+            ))}
           </TextField>
         </div>
         <div className="modal-buttons">

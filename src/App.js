@@ -7,10 +7,40 @@ import ModalDocente from "./componentes/modalDocente";
 
 import "./App.css";
 
-let semestres = [];
+let semestres = [
+  {
+    _codigoSemestre: "1-SIS",
+    _numeroSemestre: "Primero",
+    _cantidadMaterias: "6",
+    _carrera: "ciencias",
+  },
+];
 let carreras = [];
 let materias = [];
-let docentes = [];
+let docentes = [
+  {
+    _codigoDocente: "1",
+    _primerNombre: "Fabio",
+    _segundoNombre: "",
+    _primerApellido: "Camacho",
+    _segundoApellido: "Encinas",
+    _genero: "male",
+    _fechaNacimiento: "2023-06-05T04:00:00.000Z",
+    _profesion: "Ingenieria",
+    _tipoGrado: ["Licenciatura", "Diplomado"],
+  },
+  {
+    _codigoDocente: "2",
+    _primerNombre: "Pepe",
+    _segundoNombre: "",
+    _primerApellido: "Castillo",
+    _segundoApellido: "Gutierrez",
+    _genero: "male",
+    _fechaNacimiento: "2013-06-04T04:00:00.000Z",
+    _profesion: "Ingenieria",
+    _tipoGrado: ["Licenciatura", "Diplomado", "Maestría"],
+  },
+];
 
 function App() {
   const [openModalSemestre, setOpenModalSemestre] = useState(false);
@@ -51,6 +81,7 @@ function App() {
   };
 
   const addSemestre = (semestre) => {
+    console.log(semestres);
     semestres.push(semestre);
   };
 
@@ -94,6 +125,7 @@ function App() {
           open={openModalMateria}
           handleClose={handleCloseModalMateria}
           addMateria={addMateria}
+          docentes={docentes} // Agrega esta línea
         />
 
         <Button variant="contained" onClick={handleOpenModalCarrera}>
