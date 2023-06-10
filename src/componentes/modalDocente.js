@@ -15,6 +15,7 @@ import {
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
 import Docente from "../clases/docente";
+import { startOfDay, format  } from "date-fns";
 
 const ModalDocente = ({ open, handleClose, addDocente }) => {
   const [codigoDocente, setCodigoDocente] = useState("");
@@ -55,7 +56,8 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
   };
 
   const handleFechaNacimientoChange = (date) => {
-    setFechaNacimiento(date);
+    const fechaSinHora = startOfDay(date);
+    setFechaNacimiento(fechaSinHora);
   };
 
   const handleProfesionChange = (event) => {
@@ -79,6 +81,21 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
   };
 
   const handleAccept = () => {
+    const tipoGrado = [];
+
+    if (licenciatura) {
+      tipoGrado.push("Licenciatura");
+    }
+    if (diplomado) {
+      tipoGrado.push("Diplomado");
+    }
+    if (maestria) {
+      tipoGrado.push("Maestría");
+    }
+    if (phd) {
+      tipoGrado.push("PhD");
+    }
+
     const docente = new Docente(
       codigoDocente,
       primerNombre,
@@ -88,10 +105,7 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
       genero,
       fechaNacimiento,
       profesion,
-      licenciatura,
-      diplomado,
-      maestria,
-      phd
+      tipoGrado
     );
 
     addDocente(docente);
@@ -195,12 +209,21 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
             </Grid>
             <Grid item xs={6}>
               <DatePicker
-                InputLabelProps={{
-                  shrink: true,
-                }}
+              // corregir, aun almacena hora en la fecha de nacimiento
                 label="Fecha de nacimiento"
                 value={fechaNacimiento}
                 onChange={handleFechaNacimientoChange}
+                renderInput={(props) => (
+                  <TextField
+                    {...props}
+                    variant="outlined"
+                    value={
+                      fechaNacimiento
+                        ? format(fechaNacimiento, "eeee MMM dd yyyy")
+                        : ""
+                    }
+                  />
+                )}
               />
             </Grid>
             <Grid item xs={6}>
@@ -212,13 +235,17 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
                 label="Profesión"
                 onChange={handleProfesionChange}
               >
-                <MenuItem value="Ten">Ten</MenuItem>
-                <MenuItem value="Twenty">Twenty</MenuItem>
-                <MenuItem value="Thirty">Thirty</MenuItem>
+                <MenuItem value="Ingenieria">Ingeniería</MenuItem>
+                <MenuItem value="Humanidades">Humanidades</MenuItem>
+                <MenuItem value="Medicina">Medicina</MenuItem>
+                <MenuItem value="Economia">Economía</MenuItem>
+                <MenuItem value="Administracion">Administración</MenuItem>
               </Select>
             </Grid>
+
             <Grid item xs={6}>
               <FormGroup>
+                <label>Tipo de grado</label>
                 <FormControlLabel
                   control={
                     <Checkbox
