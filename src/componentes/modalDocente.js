@@ -15,7 +15,7 @@ import {
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
 import Docente from "../clases/docente";
-import { startOfDay, format  } from "date-fns";
+import { startOfDay, format } from "date-fns";
 
 const ModalDocente = ({ open, handleClose, addDocente }) => {
   const [codigoDocente, setCodigoDocente] = useState("");
@@ -56,8 +56,7 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
   };
 
   const handleFechaNacimientoChange = (date) => {
-    const fechaSinHora = startOfDay(date);
-    setFechaNacimiento(fechaSinHora);
+    setFechaNacimiento(date);
   };
 
   const handleProfesionChange = (event) => {
@@ -209,7 +208,6 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
             </Grid>
             <Grid item xs={6}>
               <DatePicker
-              // corregir, aun almacena hora en la fecha de nacimiento
                 label="Fecha de nacimiento"
                 value={fechaNacimiento}
                 onChange={handleFechaNacimientoChange}
@@ -219,7 +217,7 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
                     variant="outlined"
                     value={
                       fechaNacimiento
-                        ? format(fechaNacimiento, "eeee MMM dd yyyy")
+                        ? fechaNacimiento.toLocaleDateString()
                         : ""
                     }
                   />
