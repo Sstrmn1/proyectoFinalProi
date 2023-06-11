@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Button, Table, TableContainer, TableHead, TableBody, TableRow, TableCell, Paper } from "@mui/material";
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import ModalSemestre from "./componentes/modalSemestre";
 import ModalMateria from "./componentes/modalMateria";
 import ModalCarrera from "./componentes/modalCarrera";
@@ -171,107 +181,139 @@ function App() {
           addDocente={addDocente}
         />
 
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Código Semestre</TableCell>
-                <TableCell>Número Semestre</TableCell>
-                <TableCell>Cantidad de Materias</TableCell>
-                <TableCell>Carrera</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {semestres.map((semestre) => (
-                <TableRow key={semestre._codigoSemestre}>
-                  <TableCell>{semestre._codigoSemestre}</TableCell>
-                  <TableCell>{semestre._numeroSemestre}</TableCell>
-                  <TableCell>{semestre._cantidadMaterias}</TableCell>
-                  <TableCell>{semestre._carrera}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <Button variant="contained" onClick={handleOpenModalSemestre}>
+          Mostrar Semestres
+        </Button>
 
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Código Materia</TableCell>
-                <TableCell>Nombre Materia</TableCell>
-                <TableCell>Semestre</TableCell>
-                <TableCell>Carrera</TableCell>
-                <TableCell>Docente</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {materias.map((materia) => (
-                <TableRow key={materia._codigoMateria}>
-                  <TableCell>{materia._codigoMateria}</TableCell>
-                  <TableCell>{materia._nombreMateria}</TableCell>
-                  <TableCell>{materia._semestre}</TableCell>
-                  <TableCell>{materia._carrera}</TableCell>
-                  <TableCell>{materia._docente}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <Button variant="contained" onClick={handleOpenModalMateria}>
+          Mostrar Materias
+        </Button>
 
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Código Carrera</TableCell>
-                <TableCell>Nombre Carrera</TableCell>
-                <TableCell>Cantidad de Semestres</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {carreras.map((carrera) => (
-                <TableRow key={carrera._codigoCarrera}>
-                  <TableCell>{carrera._codigoCarrera}</TableCell>
-                  <TableCell>{carrera._nombreCarrera}</TableCell>
-                  <TableCell>{carrera._cantidadSemestres}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <Button variant="contained" onClick={handleOpenModalCarrera}>
+          Mostrar Carreras
+        </Button>
 
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Código Docente</TableCell>
-                <TableCell>Primer Nombre</TableCell>
-                <TableCell>Segundo Nombre</TableCell>
-                <TableCell>Primer Apellido</TableCell>
-                <TableCell>Segundo Apellido</TableCell>
-                <TableCell>Género</TableCell>
-                <TableCell>Fecha de Nacimiento</TableCell>
-                <TableCell>Profesión</TableCell>
-                <TableCell>Tipo de Grado</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {docentes.map((docente) => (
-                <TableRow key={docente._codigoDocente}>
-                  <TableCell>{docente._codigoDocente}</TableCell>
-                  <TableCell>{docente._primerNombre}</TableCell>
-                  <TableCell>{docente._segundoNombre}</TableCell>
-                  <TableCell>{docente._primerApellido}</TableCell>
-                  <TableCell>{docente._segundoApellido}</TableCell>
-                  <TableCell>{docente._genero}</TableCell>
-                  <TableCell>{docente._fechaNacimiento}</TableCell>
-                  <TableCell>{docente._profesion}</TableCell>
-                  <TableCell>{docente._tipoGrado.join(", ")}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <Button variant="contained" onClick={handleOpenModalDocente}>
+          Mostrar Docentes
+        </Button>
+
+        <Dialog open={openModalSemestre} onClose={handleCloseModalSemestre}>
+          <DialogContent>
+            <TableContainer>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Código Semestre</TableCell>
+                    <TableCell>Número Semestre</TableCell>
+                    <TableCell>Cantidad de Materias</TableCell>
+                    <TableCell>Carrera</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {semestres.map((semestre) => (
+                    <TableRow key={semestre._codigoSemestre}>
+                      <TableCell>{semestre._codigoSemestre}</TableCell>
+                      <TableCell>{semestre._numeroSemestre}</TableCell>
+                      <TableCell>{semestre._cantidadMaterias}</TableCell>
+                      <TableCell>{semestre._carrera}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </DialogContent>
+        </Dialog>
+
+        <Dialog open={openModalMateria} onClose={handleCloseModalMateria}>
+          <DialogContent>
+            <TableContainer>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Código Materia</TableCell>
+                    <TableCell>Nombre Materia</TableCell>
+                    <TableCell>Semestre</TableCell>
+                    <TableCell>Carrera</TableCell>
+                    <TableCell>Docente</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {materias.map((materia) => (
+                    <TableRow key={materia._codigoMateria}>
+                      <TableCell>{materia._codigoMateria}</TableCell>
+                      <TableCell>{materia._nombreMateria}</TableCell>
+                      <TableCell>{materia._semestre}</TableCell>
+                      <TableCell>{materia._carrera}</TableCell>
+                      <TableCell>{materia._docente}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </DialogContent>
+        </Dialog>
+
+        <Dialog open={openModalCarrera} onClose={handleCloseModalCarrera}>
+          <DialogContent>
+            <TableContainer>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Código Carrera</TableCell>
+                    <TableCell>Nombre Carrera</TableCell>
+                    <TableCell>Cantidad de Semestres</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {carreras.map((carrera) => (
+                    <TableRow key={carrera._codigoCarrera}>
+                      <TableCell>{carrera._codigoCarrera}</TableCell>
+                      <TableCell>{carrera._nombreCarrera}</TableCell>
+                      <TableCell>{carrera._cantidadSemestres}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </DialogContent>
+        </Dialog>
+
+        <Dialog open={openModalDocente} onClose={handleCloseModalDocente}>
+          <DialogContent>
+            <TableContainer>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Código Docente</TableCell>
+                    <TableCell>Primer Nombre</TableCell>
+                    <TableCell>Segundo Nombre</TableCell>
+                    <TableCell>Primer Apellido</TableCell>
+                    <TableCell>Segundo Apellido</TableCell>
+                    <TableCell>Género</TableCell>
+                    <TableCell>Fecha de Nacimiento</TableCell>
+                    <TableCell>Profesión</TableCell>
+                    <TableCell>Tipo de Grado</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {docentes.map((docente) => (
+                    <TableRow key={docente._codigoDocente}>
+                      <TableCell>{docente._codigoDocente}</TableCell>
+                      <TableCell>{docente._primerNombre}</TableCell>
+                      <TableCell>{docente._segundoNombre}</TableCell>
+                      <TableCell>{docente._primerApellido}</TableCell>
+                      <TableCell>{docente._segundoApellido}</TableCell>
+                      <TableCell>{docente._genero}</TableCell>
+                      <TableCell>{docente._fechaNacimiento}</TableCell>
+                      <TableCell>{docente._profesion}</TableCell>
+                      <TableCell>{docente._tipoGrado.join(", ")}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </DialogContent>
+        </Dialog>
       </header>
     </div>
   );
