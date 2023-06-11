@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "@mui/material";
+import { Button, Table, TableContainer, TableHead, TableBody, TableRow, TableCell, Paper } from "@mui/material";
 import ModalSemestre from "./componentes/modalSemestre";
 import ModalMateria from "./componentes/modalMateria";
 import ModalCarrera from "./componentes/modalCarrera";
@@ -15,6 +15,7 @@ let semestres = [
     _carrera: "ciencias",
   },
 ];
+
 let carreras = [
   {
     _codigoCarrera: "C1",
@@ -44,6 +45,7 @@ let materias = [
     _docente: "Pepe Fermin",
   },
 ];
+
 let docentes = [
   {
     _codigoDocente: "1",
@@ -127,12 +129,6 @@ function App() {
     console.log(docentes);
   };
 
-  // const handleAcceptMateria = (materia) => {
-  //   materias.push(materia);
-  //   console.log(materias);
-  //   handleCloseModalMateria();
-  // };
-
   return (
     <div className="App">
       <header className="App-header">
@@ -152,7 +148,7 @@ function App() {
           open={openModalMateria}
           handleClose={handleCloseModalMateria}
           addMateria={addMateria}
-          docentes={docentes} // Agrega esta línea
+          docentes={docentes}
           semestres={semestres}
           carreras={carreras}
         />
@@ -175,7 +171,107 @@ function App() {
           addDocente={addDocente}
         />
 
-        {/* Resto del código... */}
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Código Semestre</TableCell>
+                <TableCell>Número Semestre</TableCell>
+                <TableCell>Cantidad de Materias</TableCell>
+                <TableCell>Carrera</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {semestres.map((semestre) => (
+                <TableRow key={semestre._codigoSemestre}>
+                  <TableCell>{semestre._codigoSemestre}</TableCell>
+                  <TableCell>{semestre._numeroSemestre}</TableCell>
+                  <TableCell>{semestre._cantidadMaterias}</TableCell>
+                  <TableCell>{semestre._carrera}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Código Materia</TableCell>
+                <TableCell>Nombre Materia</TableCell>
+                <TableCell>Semestre</TableCell>
+                <TableCell>Carrera</TableCell>
+                <TableCell>Docente</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {materias.map((materia) => (
+                <TableRow key={materia._codigoMateria}>
+                  <TableCell>{materia._codigoMateria}</TableCell>
+                  <TableCell>{materia._nombreMateria}</TableCell>
+                  <TableCell>{materia._semestre}</TableCell>
+                  <TableCell>{materia._carrera}</TableCell>
+                  <TableCell>{materia._docente}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Código Carrera</TableCell>
+                <TableCell>Nombre Carrera</TableCell>
+                <TableCell>Cantidad de Semestres</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {carreras.map((carrera) => (
+                <TableRow key={carrera._codigoCarrera}>
+                  <TableCell>{carrera._codigoCarrera}</TableCell>
+                  <TableCell>{carrera._nombreCarrera}</TableCell>
+                  <TableCell>{carrera._cantidadSemestres}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Código Docente</TableCell>
+                <TableCell>Primer Nombre</TableCell>
+                <TableCell>Segundo Nombre</TableCell>
+                <TableCell>Primer Apellido</TableCell>
+                <TableCell>Segundo Apellido</TableCell>
+                <TableCell>Género</TableCell>
+                <TableCell>Fecha de Nacimiento</TableCell>
+                <TableCell>Profesión</TableCell>
+                <TableCell>Tipo de Grado</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {docentes.map((docente) => (
+                <TableRow key={docente._codigoDocente}>
+                  <TableCell>{docente._codigoDocente}</TableCell>
+                  <TableCell>{docente._primerNombre}</TableCell>
+                  <TableCell>{docente._segundoNombre}</TableCell>
+                  <TableCell>{docente._primerApellido}</TableCell>
+                  <TableCell>{docente._segundoApellido}</TableCell>
+                  <TableCell>{docente._genero}</TableCell>
+                  <TableCell>{docente._fechaNacimiento}</TableCell>
+                  <TableCell>{docente._profesion}</TableCell>
+                  <TableCell>{docente._tipoGrado.join(", ")}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </header>
     </div>
   );
