@@ -126,6 +126,7 @@ function App() {
           handleClose={handleCloseModalMateria}
           addMateria={addMateria}
           docentes={docentes} // Agrega esta línea
+          semestres={semestres}
         />
 
         <Button variant="contained" onClick={handleOpenModalCarrera}>

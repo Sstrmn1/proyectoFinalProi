@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import Materia from "../clases/materia";
 import { Button, TextField, Modal, MenuItem } from "@mui/material";
-import { docentes } from "../App";
+import { docentes, semestres } from "../App";
 
-const ModalMateria = ({ open, handleClose, addMateria, docentes }) => {
+const ModalMateria = ({
+  open,
+  handleClose,
+  addMateria,
+  docentes,
+  semestres,
+}) => {
   const [codigoMateria, setCodigoMateria] = useState("");
   const [nombreMateria, setNombreMateria] = useState("");
   const [semestre, setSemestre] = useState("");
@@ -74,9 +80,14 @@ const ModalMateria = ({ open, handleClose, addMateria, docentes }) => {
             value={semestre}
             onChange={handleSemestreChange}
           >
-            <MenuItem value="1">1</MenuItem>
-            <MenuItem value="2">2</MenuItem>
-            <MenuItem value="3">3</MenuItem>
+            {semestres.map((semestre) => (
+              <MenuItem
+                key={semestre._codigoSemestre}
+                value={semestre._numeroSemestre}
+              >
+                {semestre._numeroSemestre}
+              </MenuItem>
+            ))}
           </TextField>
         </div>
         <div>
