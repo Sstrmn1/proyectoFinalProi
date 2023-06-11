@@ -15,8 +15,35 @@ let semestres = [
     _carrera: "ciencias",
   },
 ];
-let carreras = [];
-let materias = [];
+let carreras = [
+  {
+    _codigoCarrera: "C1",
+    _nombreCarrera: "Ingeniería de Software",
+    _cantidadSemestres: 10,
+  },
+  {
+    _codigoCarrera: "C2",
+    _nombreCarrera: "Arquitectura",
+    _cantidadSemestres: 8,
+  },
+];
+
+let materias = [
+  {
+    _codigoMateria: "M1",
+    _nombreMateria: "Programación I",
+    _semestre: "Primero",
+    _carrera: "Ingeniería de Software",
+    _docente: "Fabio Camacho",
+  },
+  {
+    _codigoMateria: "M2",
+    _nombreMateria: "Base de Datos",
+    _semestre: "Segundo",
+    _carrera: "Ingeniería de Software",
+    _docente: "Pepe Fermin",
+  },
+];
 let docentes = [
   {
     _codigoDocente: "1",
@@ -33,7 +60,7 @@ let docentes = [
     _codigoDocente: "2",
     _primerNombre: "Pepe",
     _segundoNombre: "",
-    _primerApellido: "Castillo",
+    _primerApellido: "Fermin",
     _segundoApellido: "Gutierrez",
     _genero: "male",
     _fechaNacimiento: "2013-06-04T04:00:00.000Z",
@@ -127,6 +154,7 @@ function App() {
           addMateria={addMateria}
           docentes={docentes} // Agrega esta línea
           semestres={semestres}
+          carreras={carreras}
         />
 
         <Button variant="contained" onClick={handleOpenModalCarrera}>
