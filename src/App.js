@@ -14,7 +14,7 @@ import ModalSemestre from "./componentes/modalSemestre";
 import ModalMateria from "./componentes/modalMateria";
 import ModalCarrera from "./componentes/modalCarrera";
 import ModalDocente from "./componentes/modalDocente";
-
+import TablaCarrera from "./componentes/tablaCarrera";
 import "./App.css";
 
 let semestres = [
@@ -255,28 +255,10 @@ function App() {
 
         <Dialog open={openModalCarrera} onClose={handleCloseModalCarrera}>
           <DialogContent>
-            <TableContainer>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Código Carrera</TableCell>
-                    <TableCell>Nombre Carrera</TableCell>
-                    <TableCell>Cantidad de Semestres</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {carreras.map((carrera) => (
-                    <TableRow key={carrera._codigoCarrera}>
-                      <TableCell>{carrera._codigoCarrera}</TableCell>
-                      <TableCell>{carrera._nombreCarrera}</TableCell>
-                      <TableCell>{carrera._cantidadSemestres}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+            <TablaCarrera carreras={carreras} />
           </DialogContent>
         </Dialog>
+
 
         <Dialog open={openModalDocente} onClose={handleCloseModalDocente}>
           <DialogContent>
