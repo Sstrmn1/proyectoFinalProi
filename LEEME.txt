@@ -1,1 +1,5 @@
-Ejecutar npm install en el directorio para instalar los paquetes necesarios para que corra la aplicacion sin errores
+Despues de copiar los archivos ejecutar npm install en el directorio principal para 
+instalar los paquetes necesarios para que corra la aplicacion sin errores
+
+direccion del repositorio en git:
+https://github.com/Sstrmn1/proyectoFinalProi.git
