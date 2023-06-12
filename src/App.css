@@ -82,3 +82,12 @@
   padding: 0 2rem ;
   background-color: rgba(45, 45, 56, 0.761);
 }
+
+.modal-container {
+  height: 90vh; /* Ajusta la altura según tus necesidades */
+  overflow-y: auto;
+}
+
+.modal-content {
+  padding: 0 2rem 2rem 2rem; /* Agrega un espacio al final para separar los botones */
+}

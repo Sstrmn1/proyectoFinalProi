@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Carrera from "../clases/carrera";
-import { Button, TextField, Modal } from "@mui/material";
+import { Button, TextField, Modal, Grid } from "@mui/material";
 
 const ModalCarrera = ({ open, handleClose, addCarrera }) => {
   const [codigoCarrera, setCodigoCarrera] = useState("");
@@ -30,40 +30,61 @@ const ModalCarrera = ({ open, handleClose, addCarrera }) => {
   return (
     <Modal open={open} onClose={handleClose}>
       <div className="modal-container">
-        <h2>Registro de carrera</h2>
-        <div>
-          <label htmlFor="codigoCarrera">Código de carrera</label>
-          <TextField
-            id="codigoCarrera"
-            variant="outlined"
-            value={codigoCarrera}
-            onChange={handleCodigoCarreraChange}
-          />
+        <div className="modal-content">
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <h2>Registro de carrera</h2>
+            </Grid>
+            <Grid item xs={12}>
+              <div>
+                <label htmlFor="codigoCarrera">Código de carrera</label>
+                <TextField
+                  id="codigoCarrera"
+                  variant="outlined"
+                  value={codigoCarrera}
+                  onChange={handleCodigoCarreraChange}
+                />
+              </div>
+            </Grid>
+            <Grid item xs={6}>
+              <div>
+                <label htmlFor="nombreCarrera">Nombre de carrera</label>
+                <TextField
+                  id="nombreCarrera"
+                  variant="outlined"
+                  value={nombreCarrera}
+                  onChange={handleNombreCarreraChange}
+                />
+              </div>
+            </Grid>
+            <Grid item xs={6}>
+              <div>
+                <label htmlFor="cantidadSemestre">Cantidad de semestres</label>
+                <TextField
+                  id="cantidadSemestre"
+                  variant="outlined"
+                  value={cantidadSemestre}
+                  onChange={handleCantidadSemestreChange}
+                />
+              </div>
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleAccept}
+              >
+                Aceptar
+              </Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button variant="contained" onClick={handleClose}>
+                Cancelar
+              </Button>
+            </Grid>
+          </Grid>
         </div>
-        <div>
-          <label htmlFor="nombreCarrera">Nombre de carrera</label>
-          <TextField
-            id="nombreCarrera"
-            variant="outlined"
-            value={nombreCarrera}
-            onChange={handleNombreCarreraChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="cantidadSemestre">Cantidad de semestres</label>
-          <TextField
-            id="cantidadSemestre"
-            variant="outlined"
-            value={cantidadSemestre}
-            onChange={handleCantidadSemestreChange}
-          />
-        </div>
-        <Button variant="contained" color="primary" onClick={handleAccept}>
-          Aceptar
-        </Button>
-        <Button variant="contained" onClick={handleClose}>
-          Cancelar
-        </Button>
+        
       </div>
     </Modal>
   );
