@@ -12,6 +12,11 @@ import {
   Radio,
   MenuItem,
 } from "@mui/material";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateField } from '@mui/x-date-pickers/DateField';
+import dayjs from 'dayjs';
+
 
 import Docente from "../clases/docente";
 
@@ -53,8 +58,8 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
     setGenero(event.target.value);
   };
 
-  const handleFechaNacimientoChange = (event) => {
-    setFechaNacimiento(event.target.value);
+  const handleFechaNacimientoChange = (date) => {
+    setFechaNacimiento(date);
   };
 
   const handleProfesionChange = (event) => {
@@ -93,6 +98,7 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
       tipoGrado.push("PhD");
     }
 
+    const fechaNacimientoString = dayjs(fechaNacimiento.$d).format('YYYY-MM-DD');
     const docente = new Docente(
       codigoDocente,
       primerNombre,
@@ -100,7 +106,7 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
       primerApellido,
       segundoApellido,
       genero,
-      fechaNacimiento,
+      fechaNacimientoString,
       profesion,
       tipoGrado
     );
@@ -132,188 +138,193 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
   };
 
   return (
-    <Modal open={open} onClose={handleClose} className="modal-form">
-      <div className="modal-container">
-        <div className="modal-content">
-          <h2>Registro de docente</h2>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <Modal open={open} onClose={handleClose} className="modal-form">
+        <div className="modal-container">
+          <div className="modal-content">
+            <h2>Registro de docente</h2>
 
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                label="Código de docente"
-                variant="outlined"
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                autoComplete="off"
-                value={codigoDocente}
-                onChange={handleCodigoDocenteChange}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Primer Nombre"
-                variant="outlined"
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                autoComplete="off"
-                value={primerNombre}
-                onChange={handlePrimerNombreChange}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Segundo Nombre"
-                variant="outlined"
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                autoComplete="off"
-                value={segundoNombre}
-                onChange={handleSegundoNombreChange}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Primer Apellido"
-                variant="outlined"
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                autoComplete="off"
-                value={primerApellido}
-                onChange={handlePrimerApellidoChange}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Segundo Apellido"
-                variant="outlined"
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                autoComplete="off"
-                value={segundoApellido}
-                onChange={handleSegundoApellidoChange}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <RadioGroup
-                aria-labelledby="demo-radio-buttons-group-label"
-                value={genero}
-                onChange={handleGeneroChange}
-              >
-                <FormControlLabel
-                  value="femenino"
-                  control={<Radio />}
-                  label="Femenino"
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  label="Código de docente"
+                  variant="outlined"
+                  fullWidth
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  autoComplete="off"
+                  value={codigoDocente}
+                  onChange={handleCodigoDocenteChange}
                 />
-                <FormControlLabel
-                  value="masculino"
-                  control={<Radio />}
-                  label="Masculino"
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Primer Nombre"
+                  variant="outlined"
+                  fullWidth
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  autoComplete="off"
+                  value={primerNombre}
+                  onChange={handlePrimerNombreChange}
                 />
-                <FormControlLabel
-                  value="otro"
-                  control={<Radio />}
-                  label="Otro"
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Segundo Nombre"
+                  variant="outlined"
+                  fullWidth
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  autoComplete="off"
+                  value={segundoNombre}
+                  onChange={handleSegundoNombreChange}
                 />
-              </RadioGroup>
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Fecha de nacimiento"
-                variant="outlined"
-                fullWidth
-                InputLabelProps={{ shrink: true }}
-                autoComplete="off"
-                value={fechaNacimiento}
-                onChange={handleFechaNacimientoChange}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Profesion"
-                id="profesion"
-                select
-                variant="outlined"
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                value={profesion}
-                onChange={handleProfesionChange}
-              >
-                <MenuItem value="Ingenieria">Ingeniería</MenuItem>
-                <MenuItem value="Humanidades">Humanidades</MenuItem>
-                <MenuItem value="Medicina">Medicina</MenuItem>
-                <MenuItem value="Economia">Economía</MenuItem>
-                <MenuItem value="Administracion">Administración</MenuItem>
-              </TextField>
-            </Grid>
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Primer Apellido"
+                  variant="outlined"
+                  fullWidth
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  autoComplete="off"
+                  value={primerApellido}
+                  onChange={handlePrimerApellidoChange}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Segundo Apellido"
+                  variant="outlined"
+                  fullWidth
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  autoComplete="off"
+                  value={segundoApellido}
+                  onChange={handleSegundoApellidoChange}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  value={genero}
+                  onChange={handleGeneroChange}
+                >
+                  <FormControlLabel
+                    value="femenino"
+                    control={<Radio />}
+                    label="Femenino"
+                  />
+                  <FormControlLabel
+                    value="masculino"
+                    control={<Radio />}
+                    label="Masculino"
+                  />
+                  <FormControlLabel
+                    value="otro"
+                    control={<Radio />}
+                    label="Otro"
+                  />
+                </RadioGroup>
+              </Grid>
+              <Grid item xs={6}>
+                <DateField label="Fecha de nacimiento"
+                  variant="outlined"
+                  fullWidth
+                  InputLabelProps={{ shrink: true }}
+                  autoComplete="off"
+                  value={fechaNacimiento}
+                  onChange={handleFechaNacimientoChange} />
 
-            <Grid item xs={6}>
-              <FormGroup>
-                <label>Tipo de grado</label>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={licenciatura}
-                      onChange={handleLicenciaturaChange}
-                    />
-                  }
-                  label="Licenciatura"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={diplomado}
-                      onChange={handleDiplomadoChange}
-                    />
-                  }
-                  label="Diplomado"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={maestria}
-                      onChange={handleMaestriaChange}
-                    />
-                  }
-                  label="Maestría"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox checked={phd} onChange={handlePhdChange} />
-                  }
-                  label="PhD"
-                />
-              </FormGroup>
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Profesion"
+                  id="profesion"
+                  select
+                  variant="outlined"
+                  fullWidth
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  value={profesion}
+                  onChange={handleProfesionChange}
+                >
+                  <MenuItem value="Ingenieria">Ingeniería</MenuItem>
+                  <MenuItem value="Humanidades">Humanidades</MenuItem>
+                  <MenuItem value="Medicina">Medicina</MenuItem>
+                  <MenuItem value="Economia">Economía</MenuItem>
+                  <MenuItem value="Administracion">Administración</MenuItem>
+                </TextField>
+              </Grid>
+
+              <Grid item xs={6}>
+                <FormGroup>
+                  <label>Tipo de grado</label>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={licenciatura}
+                        onChange={handleLicenciaturaChange}
+                      />
+                    }
+                    label="Licenciatura"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={diplomado}
+                        onChange={handleDiplomadoChange}
+                      />
+                    }
+                    label="Diplomado"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={maestria}
+                        onChange={handleMaestriaChange}
+                      />
+                    }
+                    label="Maestría"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox checked={phd} onChange={handlePhdChange} />
+                    }
+                    label="PhD"
+                  />
+                </FormGroup>
+              </Grid>
+              <Grid item xs={6}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleAccept}
+                >
+                  Aceptar
+                </Button>
+              </Grid>
+              <Grid item xs={6}>
+                <Button variant="contained" onClick={handleCancel}>
+                  Cancelar
+                </Button>
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleAccept}
-              >
-                Aceptar
-              </Button>
-            </Grid>
-            <Grid item xs={6}>
-              <Button variant="contained" onClick={handleCancel}>
-                Cancelar
-              </Button>
-            </Grid>
-          </Grid>
+          </div>
         </div>
-      </div>
-    </Modal>
+      </Modal>
+
+
+
+    </LocalizationProvider>
+
   );
 };
 
