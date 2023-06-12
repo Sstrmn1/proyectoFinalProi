@@ -25,6 +25,18 @@ const ModalCarrera = ({ open, handleClose, addCarrera }) => {
     addCarrera(carrera);
 
     handleClose();
+    resetFields();
+  };
+
+  const handleCancel = () => {
+    handleClose();
+    resetFields();
+  };
+
+  const resetFields = () => {
+    setCodigoCarrera("");
+    setNombreCarrera("");
+    setCantidadSemestre("");
   };
 
   return (
@@ -91,7 +103,7 @@ const ModalCarrera = ({ open, handleClose, addCarrera }) => {
               </Button>
             </Grid>
             <Grid item xs={6}>
-              <Button variant="contained" onClick={handleClose}>
+              <Button variant="contained" onClick={handleCancel}>
                 Cancelar
               </Button>
             </Grid>
