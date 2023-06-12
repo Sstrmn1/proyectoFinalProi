@@ -3,12 +3,7 @@ import {
   Button,
   Dialog,
   DialogContent,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
+
 } from "@mui/material";
 import ModalSemestre from "./componentes/modalSemestre";
 import ModalMateria from "./componentes/modalMateria";
@@ -66,7 +61,7 @@ let docentes = [
     _segundoNombre: "",
     _primerApellido: "Camacho",
     _segundoApellido: "Encinas",
-    _genero: "male",
+    _genero: "masculino",
     _fechaNacimiento: "2023-06-05T04:00:00.000Z",
     _profesion: "Ingenieria",
     _tipoGrado: ["Licenciatura", "Diplomado"],
@@ -77,7 +72,7 @@ let docentes = [
     _segundoNombre: "",
     _primerApellido: "Fermin",
     _segundoApellido: "Gutierrez",
-    _genero: "male",
+    _genero: "masculino",
     _fechaNacimiento: "2013-06-04T04:00:00.000Z",
     _profesion: "Ingenieria",
     _tipoGrado: ["Licenciatura", "Diplomado", "Maestría"],
@@ -90,6 +85,9 @@ function App() {
   const [openModalCarrera, setOpenModalCarrera] = useState(false);
   const [openModalDocente, setOpenModalDocente] = useState(false);
   const [openTablaSemestre, setOpenTablaSemestre] = useState(false);
+  const [openTablaMateria, setOpenTablaMateria] = useState(false);
+  const [openTablaCarrera, setOpenTablaCarrera] = useState(false);
+  const [openTablaDocente, setOpenTablaDocente] = useState(false);
 
   const handleOpenTablaSemestre = () => {
     setOpenTablaSemestre(true);
@@ -97,7 +95,31 @@ function App() {
 
   const handleCloseTablaSemestre = () => {
     setOpenTablaSemestre(false);
-  }
+  };
+
+  const handleOpenTablaMateria = () => {
+    setOpenTablaMateria(true);
+  };
+
+  const handleCloseTablaMateria = () => {
+    setOpenTablaMateria(false);
+  };
+
+  const handleOpenTablaCarrera = () => {
+    setOpenTablaCarrera(true);
+  };
+
+  const handleCloseTablaCarrera = () => {
+    setOpenTablaCarrera(false);
+  };
+
+  const handleOpenTablaDocente = () => {
+    setOpenTablaDocente(true);
+  };
+
+  const handleCloseTablaDocente = () => {
+    setOpenTablaDocente(false);
+  };
 
 
   const handleOpenModalSemestre = () => {
@@ -212,41 +234,41 @@ function App() {
 
 
 
-        <Button variant="contained" onClick={handleMostrarMaterias}>
+        <Button variant="contained" onClick={handleOpenTablaMateria}>
           Mostrar Materias
         </Button>
 
-        <Button variant="contained" onClick={handleMostrarCarreras}>
+        <Button variant="contained" onClick={handleOpenTablaCarrera}>
           Mostrar Carreras
         </Button>
 
-        <Button variant="contained" onClick={handleMostrarDocentes}>
+        <Button variant="contained" onClick={handleOpenTablaDocente}>
           Mostrar Docentes
         </Button>
 
         <Button variant="contained" onClick={handleOpenTablaSemestre}>
           Mostrar Semestres
         </Button>
-        
+
         <Dialog open={openTablaSemestre} onClose={handleCloseTablaSemestre}>
           <DialogContent>
             <TablaSemestre semestres={semestres} />
           </DialogContent>
         </Dialog>
 
-        <Dialog open={openModalMateria} onClose={handleCloseModalMateria}>
+        <Dialog open={openTablaMateria} onClose={handleCloseTablaMateria}>
           <DialogContent>
             <TablaMateria materias={materias} />
           </DialogContent>
         </Dialog>
 
-        <Dialog open={openModalCarrera} onClose={handleCloseModalCarrera}>
+        <Dialog open={openTablaCarrera} onClose={handleCloseTablaCarrera}>
           <DialogContent>
             <TablaCarrera carreras={carreras} />
           </DialogContent>
         </Dialog>
 
-        <Dialog open={openModalDocente} onClose={handleCloseModalDocente}>
+        <Dialog open={openTablaDocente} onClose={handleCloseTablaDocente}>
           <DialogContent>
             <TablaDocente docentes={docentes} />
           </DialogContent>

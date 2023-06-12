@@ -23,7 +23,7 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
   const [segundoNombre, setSegundoNombre] = useState("");
   const [primerApellido, setPrimerApellido] = useState("");
   const [segundoApellido, setSegundoApellido] = useState("");
-  const [genero, setGenero] = useState("female");
+  const [genero, setGenero] = useState("femenino");
   const [fechaNacimiento, setFechaNacimiento] = useState(null);
   const [profesion, setProfesion] = useState("");
   const [licenciatura, setLicenciatura] = useState(false);
@@ -190,19 +190,19 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
                 onChange={handleGeneroChange}
               >
                 <FormControlLabel
-                  value="female"
+                  value="femenino"
                   control={<Radio />}
-                  label="Female"
+                  label="Femenino"
                 />
                 <FormControlLabel
-                  value="male"
+                  value="masculino"
                   control={<Radio />}
-                  label="Male"
+                  label="Masculino"
                 />
                 <FormControlLabel
-                  value="other"
+                  value="otror"
                   control={<Radio />}
-                  label="Other"
+                  label="Otro"
                 />
               </RadioGroup>
             </Grid>
