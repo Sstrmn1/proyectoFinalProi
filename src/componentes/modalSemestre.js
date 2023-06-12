@@ -33,10 +33,20 @@ const ModalSemestre = ({ open, handleClose, addSemestre, carreras }) => {
       carrera
     );
     addSemestre(semestre);
-
-    // Aquí puedes realizar cualquier acción adicional que necesites
-
     handleClose(); // Cerrar el modal después de aceptar
+    resetFields();
+  };
+
+  const handleCancel = () => {
+    handleClose();
+    resetFields();
+  };
+
+  const resetFields = () => {
+    setCodigoSemestre("");
+    setNumeroSemestre("");
+    setCantidadMaterias("");
+    setCarrera("");
   };
 
   return (
@@ -120,16 +130,11 @@ const ModalSemestre = ({ open, handleClose, addSemestre, carreras }) => {
               </Button>
             </Grid>
             <Grid item xs={6}>
-              <Button variant="contained" onClick={handleClose}>
+              <Button variant="contained" onClick={handleCancel}>
                 Cancelar
               </Button>
             </Grid>
           </Grid>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div className="modal-buttons"></div>
         </div>
       </div>
     </Modal>
