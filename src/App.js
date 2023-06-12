@@ -15,7 +15,7 @@ let semestres = [
     _codigoSemestre: "1-SIS",
     _numeroSemestre: "Primero",
     _cantidadMaterias: "6",
-    _carrera: "ciencias",
+    _carrera: "Ing Sistemas",
   },
 ];
 
@@ -175,6 +175,7 @@ function App() {
           open={openModalSemestre}
           handleClose={handleCloseModalSemestre}
           addSemestre={addSemestre}
+          carreras={carreras}
         />
 
         <ModalMateria

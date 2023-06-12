@@ -3,7 +3,7 @@ import Semestre from "../clases/semestre";
 
 import { Button, TextField, MenuItem, Modal, Grid } from "@mui/material";
 
-const ModalSemestre = ({ open, handleClose, addSemestre }) => {
+const ModalSemestre = ({ open, handleClose, addSemestre, carreras }) => {
   const [codigoSemestre, setCodigoSemestre] = useState("");
   const [numeroSemestre, setNumeroSemestre] = useState("");
   const [cantidadMaterias, setCantidadMaterias] = useState("");
@@ -100,9 +100,14 @@ const ModalSemestre = ({ open, handleClose, addSemestre }) => {
                 value={carrera}
                 onChange={handleCarreraChange}
               >
-                <MenuItem value="ingenieria">Ingeniería</MenuItem>
-                <MenuItem value="ciencias">Ciencias</MenuItem>
-                <MenuItem value="arte">Arte</MenuItem>
+                {carreras.map((carrera) => (
+                  <MenuItem
+                    key={carrera._codigoCarrera}
+                    value={carrera._nombreCarrera}
+                  >
+                    {carrera._nombreCarrera}
+                  </MenuItem>
+                ))}
               </TextField>
             </Grid>
             <Grid item xs={6}>
