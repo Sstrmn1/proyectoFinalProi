@@ -89,6 +89,16 @@ function App() {
   const [openModalMateria, setOpenModalMateria] = useState(false);
   const [openModalCarrera, setOpenModalCarrera] = useState(false);
   const [openModalDocente, setOpenModalDocente] = useState(false);
+  const [openTablaSemestre, setOpenTablaSemestre] = useState(false);
+
+  const handleOpenTablaSemestre = () => {
+    setOpenTablaSemestre(true);
+  };
+
+  const handleCloseTablaSemestre = () => {
+    setOpenTablaSemestre(false);
+  }
+
 
   const handleOpenModalSemestre = () => {
     setOpenModalSemestre(true);
@@ -200,9 +210,7 @@ function App() {
           addDocente={addDocente}
         />
 
-        <Button variant="contained" onClick={handleMostrarSemestres}>
-          Mostrar Semestres
-        </Button>
+
 
         <Button variant="contained" onClick={handleMostrarMaterias}>
           Mostrar Materias
@@ -216,7 +224,11 @@ function App() {
           Mostrar Docentes
         </Button>
 
-        <Dialog open={openModalSemestre} onClose={handleCloseModalSemestre}>
+        <Button variant="contained" onClick={handleOpenTablaSemestre}>
+          Mostrar Semestres
+        </Button>
+        
+        <Dialog open={openTablaSemestre} onClose={handleCloseTablaSemestre}>
           <DialogContent>
             <TablaSemestre semestres={semestres} />
           </DialogContent>
