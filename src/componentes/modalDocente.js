@@ -217,12 +217,16 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
               />
             </Grid>
             <Grid item xs={6}>
-              <label>Profesión</label>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
+              <TextField
+                label="Profesion"
+                id="profesion"
+                select
+                variant="outlined"
+                fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
                 value={profesion}
-                label="Profesión"
                 onChange={handleProfesionChange}
               >
                 <MenuItem value="Ingenieria">Ingeniería</MenuItem>
@@ -230,7 +234,7 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
                 <MenuItem value="Medicina">Medicina</MenuItem>
                 <MenuItem value="Economia">Economía</MenuItem>
                 <MenuItem value="Administracion">Administración</MenuItem>
-              </Select>
+              </TextField>
             </Grid>
 
             <Grid item xs={6}>
