@@ -15,6 +15,9 @@ import ModalMateria from "./componentes/modalMateria";
 import ModalCarrera from "./componentes/modalCarrera";
 import ModalDocente from "./componentes/modalDocente";
 import TablaCarrera from "./componentes/tablaCarrera";
+import TablaMateria from "./componentes/tablaMateria";
+import TablaDocente from "./componentes/tablaDocente";
+import TablaSemestre from "./componentes/tablaSemestre";
 import "./App.css";
 
 let semestres = [
@@ -139,6 +142,22 @@ function App() {
     console.log(docentes);
   };
 
+  const handleMostrarSemestres = () => {
+    handleOpenModalSemestre();
+  };
+
+  const handleMostrarMaterias = () => {
+    handleOpenModalMateria();
+  };
+
+  const handleMostrarCarreras = () => {
+    handleOpenModalCarrera();
+  };
+
+  const handleMostrarDocentes = () => {
+    handleOpenModalDocente();
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -181,75 +200,31 @@ function App() {
           addDocente={addDocente}
         />
 
-        <Button variant="contained" onClick={handleOpenModalSemestre}>
+        <Button variant="contained" onClick={handleMostrarSemestres}>
           Mostrar Semestres
         </Button>
 
-        <Button variant="contained" onClick={handleOpenModalMateria}>
+        <Button variant="contained" onClick={handleMostrarMaterias}>
           Mostrar Materias
         </Button>
 
-        <Button variant="contained" onClick={handleOpenModalCarrera}>
+        <Button variant="contained" onClick={handleMostrarCarreras}>
           Mostrar Carreras
         </Button>
 
-        <Button variant="contained" onClick={handleOpenModalDocente}>
+        <Button variant="contained" onClick={handleMostrarDocentes}>
           Mostrar Docentes
         </Button>
 
         <Dialog open={openModalSemestre} onClose={handleCloseModalSemestre}>
           <DialogContent>
-            <TableContainer>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Código Semestre</TableCell>
-                    <TableCell>Número Semestre</TableCell>
-                    <TableCell>Cantidad de Materias</TableCell>
-                    <TableCell>Carrera</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {semestres.map((semestre) => (
-                    <TableRow key={semestre._codigoSemestre}>
-                      <TableCell>{semestre._codigoSemestre}</TableCell>
-                      <TableCell>{semestre._numeroSemestre}</TableCell>
-                      <TableCell>{semestre._cantidadMaterias}</TableCell>
-                      <TableCell>{semestre._carrera}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+            <TablaSemestre semestres={semestres} />
           </DialogContent>
         </Dialog>
 
         <Dialog open={openModalMateria} onClose={handleCloseModalMateria}>
           <DialogContent>
-            <TableContainer>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Código Materia</TableCell>
-                    <TableCell>Nombre Materia</TableCell>
-                    <TableCell>Semestre</TableCell>
-                    <TableCell>Carrera</TableCell>
-                    <TableCell>Docente</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {materias.map((materia) => (
-                    <TableRow key={materia._codigoMateria}>
-                      <TableCell>{materia._codigoMateria}</TableCell>
-                      <TableCell>{materia._nombreMateria}</TableCell>
-                      <TableCell>{materia._semestre}</TableCell>
-                      <TableCell>{materia._carrera}</TableCell>
-                      <TableCell>{materia._docente}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+            <TablaMateria materias={materias} />
           </DialogContent>
         </Dialog>
 
@@ -259,41 +234,9 @@ function App() {
           </DialogContent>
         </Dialog>
 
-
         <Dialog open={openModalDocente} onClose={handleCloseModalDocente}>
           <DialogContent>
-            <TableContainer>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Código Docente</TableCell>
-                    <TableCell>Primer Nombre</TableCell>
-                    <TableCell>Segundo Nombre</TableCell>
-                    <TableCell>Primer Apellido</TableCell>
-                    <TableCell>Segundo Apellido</TableCell>
-                    <TableCell>Género</TableCell>
-                    <TableCell>Fecha de Nacimiento</TableCell>
-                    <TableCell>Profesión</TableCell>
-                    <TableCell>Tipo de Grado</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {docentes.map((docente) => (
-                    <TableRow key={docente._codigoDocente}>
-                      <TableCell>{docente._codigoDocente}</TableCell>
-                      <TableCell>{docente._primerNombre}</TableCell>
-                      <TableCell>{docente._segundoNombre}</TableCell>
-                      <TableCell>{docente._primerApellido}</TableCell>
-                      <TableCell>{docente._segundoApellido}</TableCell>
-                      <TableCell>{docente._genero}</TableCell>
-                      <TableCell>{docente._fechaNacimiento}</TableCell>
-                      <TableCell>{docente._profesion}</TableCell>
-                      <TableCell>{docente._tipoGrado.join(", ")}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+            <TablaDocente docentes={docentes} />
           </DialogContent>
         </Dialog>
       </header>
