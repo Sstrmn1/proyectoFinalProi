@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DateField } from '@mui/x-date-pickers/DateField';
+import { DatePicker } from "@mui/x-date-pickers";
 import dayjs from 'dayjs';
 
 
@@ -234,7 +234,7 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
                 </RadioGroup>
               </Grid>
               <Grid item xs={6}>
-                <DateField label="Fecha de nacimiento"
+                <DatePicker label="Fecha de nacimiento"
                   variant="outlined"
                   fullWidth
                   InputLabelProps={{ shrink: true }}
