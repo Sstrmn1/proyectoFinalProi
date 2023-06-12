@@ -28,30 +28,38 @@ const ModalCarrera = ({ open, handleClose, addCarrera }) => {
   };
 
   return (
-    <Modal open={open} onClose={handleClose}>
+    <Modal open={open} onClose={handleClose} className="modal-form">
       <div className="modal-container">
         <div className="modal-content">
+          <h2>Registro de carrera</h2>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <h2>Registro de carrera</h2>
-            </Grid>
-            <Grid item xs={12}>
               <div>
-                <label htmlFor="codigoCarrera">Código de carrera</label>
                 <TextField
+                  label="Código carrera"
                   id="codigoCarrera"
                   variant="outlined"
                   value={codigoCarrera}
+                  fullWidth
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  autoComplete="off"
                   onChange={handleCodigoCarreraChange}
                 />
               </div>
             </Grid>
             <Grid item xs={6}>
               <div>
-                <label htmlFor="nombreCarrera">Nombre de carrera</label>
                 <TextField
+                  label="Nombre carrera"
                   id="nombreCarrera"
                   variant="outlined"
+                  fullWidth
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  autoComplete="off"
                   value={nombreCarrera}
                   onChange={handleNombreCarreraChange}
                 />
@@ -59,10 +67,15 @@ const ModalCarrera = ({ open, handleClose, addCarrera }) => {
             </Grid>
             <Grid item xs={6}>
               <div>
-                <label htmlFor="cantidadSemestre">Cantidad de semestres</label>
                 <TextField
+                  label="Cantidad de semestres"
                   id="cantidadSemestre"
                   variant="outlined"
+                  fullWidth
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  autoComplete="off"
                   value={cantidadSemestre}
                   onChange={handleCantidadSemestreChange}
                 />
@@ -84,7 +97,6 @@ const ModalCarrera = ({ open, handleClose, addCarrera }) => {
             </Grid>
           </Grid>
         </div>
-        
       </div>
     </Modal>
   );
