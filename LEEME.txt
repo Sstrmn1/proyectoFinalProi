@@ -1,0 +1,1 @@
+Ejecutar npm install en el directorio para instalar los paquetes necesarios para que corra la aplicacion sin errores
