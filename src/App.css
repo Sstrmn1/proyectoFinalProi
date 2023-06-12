@@ -36,3 +36,59 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* MUI */
+
+.MuiTextField-root label,
+.MuiTextField-root input,
+.MuiButton-root {
+  color: white;
+}
+
+.MuiTextField-root .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.5);
+} 
+
+.MuiTextField-root {
+  margin-bottom: 1.5rem;
+}
+
+.MuiTextField-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #90caf9;
+}
+
+.form-container {
+  padding: 3rem;
+}
+
+.form-container .form-button {
+  margin-left : 2rem;
+  margin-right: 2rem;
+}
+
+
+.grid-container {
+  padding: 0 20rem 0 20rem; 
+}
+
+.boton-form {
+  width: 200px; /* Puedes ajustar el valor de width según tus necesidades */
+  height: 60px;
+}
+
+.modal-form{
+  margin: 1rem 10rem 3rem 10rem;
+  padding: 0 2rem ;
+  background-color: rgba(123, 123, 143, 0.915);
+  border-radius: 10px;
+}
+
+.modal-container {
+  height: 90vh; /* Ajusta la altura según tus necesidades */
+  overflow-y: auto;
+}
+
+.modal-content {
+  padding: 0 2rem 2rem 2rem; /* Agrega un espacio al final para separar los botones */
+}
