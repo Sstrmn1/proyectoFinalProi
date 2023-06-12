@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Dialog,
-  DialogContent,
-
-} from "@mui/material";
+import { Button, Dialog, DialogContent, Grid } from "@mui/material";
 import ModalSemestre from "./componentes/modalSemestre";
 import ModalMateria from "./componentes/modalMateria";
 import ModalCarrera from "./componentes/modalCarrera";
@@ -121,7 +116,6 @@ function App() {
     setOpenTablaDocente(false);
   };
 
-
   const handleOpenModalSemestre = () => {
     setOpenModalSemestre(true);
   };
@@ -174,23 +168,15 @@ function App() {
     console.log(docentes);
   };
 
-
-
   return (
     <div className="App">
       <header className="App-header">
-        <Button variant="contained" onClick={handleOpenModalSemestre}>
-          Registrar Semestre
-        </Button>
         <ModalSemestre
           open={openModalSemestre}
           handleClose={handleCloseModalSemestre}
           addSemestre={addSemestre}
         />
 
-        <Button variant="contained" onClick={handleOpenModalMateria}>
-          Registrar Materia
-        </Button>
         <ModalMateria
           open={openModalMateria}
           handleClose={handleCloseModalMateria}
@@ -200,42 +186,17 @@ function App() {
           carreras={carreras}
         />
 
-        <Button variant="contained" onClick={handleOpenModalCarrera}>
-          Registrar Carrera
-        </Button>
         <ModalCarrera
           open={openModalCarrera}
           handleClose={handleCloseModalCarrera}
           addCarrera={addCarrera}
         />
 
-        <Button variant="contained" onClick={handleOpenModalDocente}>
-          Registrar Docente
-        </Button>
         <ModalDocente
           open={openModalDocente}
           handleClose={handleCloseModalDocente}
           addDocente={addDocente}
         />
-
-
-
-        <Button variant="contained" onClick={handleOpenTablaMateria}>
-          Mostrar Materias
-        </Button>
-
-        <Button variant="contained" onClick={handleOpenTablaCarrera}>
-          Mostrar Carreras
-        </Button>
-
-        <Button variant="contained" onClick={handleOpenTablaDocente}>
-          Mostrar Docentes
-        </Button>
-
-        <Button variant="contained" onClick={handleOpenTablaSemestre}>
-          Mostrar Semestres
-        </Button>
-
         <Dialog open={openTablaSemestre} onClose={handleCloseTablaSemestre}>
           <DialogContent>
             <TablaSemestre semestres={semestres} />
@@ -259,6 +220,52 @@ function App() {
             <TablaDocente docentes={docentes} />
           </DialogContent>
         </Dialog>
+
+        <Grid container spacing={2}  className="grid-container">
+          <Grid item xs={12}>
+            <h2>Formulario de registro academico</h2>
+          </Grid>
+          <Grid item xs={6}>
+            <Button variant="contained" onClick={handleOpenModalMateria} className="boton-form">
+              Registrar Materia
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button variant="contained" onClick={handleOpenTablaMateria} className="boton-form">
+              Mostrar Materias
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button variant="contained" onClick={handleOpenModalSemestre} className="boton-form">
+              Registrar Semestre
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button variant="contained" onClick={handleOpenTablaSemestre} className="boton-form">
+              Mostrar Semestres
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button variant="contained" onClick={handleOpenModalDocente} className="boton-form">
+              Registrar Docente
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button variant="contained" onClick={handleOpenTablaDocente} className="boton-form">
+              Mostrar Docentes
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button variant="contained" onClick={handleOpenModalCarrera} className="boton-form">
+              Registrar Carrera
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button variant="contained" onClick={handleOpenTablaCarrera} className="boton-form">
+              Mostrar Carreras
+            </Button>
+          </Grid>
+        </Grid>
       </header>
     </div>
   );
