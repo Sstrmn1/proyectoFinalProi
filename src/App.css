@@ -80,7 +80,8 @@
 .modal-form{
   margin: 1rem 10rem 3rem 10rem;
   padding: 0 2rem ;
-  background-color: rgba(45, 45, 56, 0.761);
+  background-color: rgba(123, 123, 143, 0.915);
+  border-radius: 10px;
 }
 
 .modal-container {

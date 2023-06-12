@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Materia from "../clases/materia";
-import { Button, TextField, Modal, MenuItem } from "@mui/material";
+import { Button, TextField, Modal, MenuItem, Grid } from "@mui/material";
 // import { docentes, semestres, carreras } from "../App";
 
 const ModalMateria = ({
@@ -51,91 +51,123 @@ const ModalMateria = ({
   };
 
   return (
-    <Modal open={open} onClose={handleClose}>
+    <Modal open={open} onClose={handleClose} className="modal-form">
       <div className="modal-container">
-        <h2>Registrar materia</h2>
-        <div>
-          <label htmlFor="codigoMateria">Código de la materia</label>
-          <TextField
-            id="codigoMateria"
-            variant="outlined"
-            value={codigoMateria}
-            onChange={handleCodigoMateriaChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="nombreMateria">Nombre de la materia</label>
-          <TextField
-            id="nombreMateria"
-            variant="outlined"
-            value={nombreMateria}
-            onChange={handleNombreMateriaChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="semestre">Semestre</label>
-          <TextField
-            id="semestre"
-            select
-            variant="outlined"
-            value={semestre}
-            onChange={handleSemestreChange}
-          >
-            {semestres.map((semestre) => (
-              <MenuItem
-                key={semestre._codigoSemestre}
-                value={semestre._numeroSemestre}
+        <div className="modal-content">
+          <h2>Registrar materia</h2>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                label="Codigo de materia"
+                id="codigoMateria"
+                variant="outlined"
+                fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                autoComplete="off"
+                value={codigoMateria}
+                onChange={handleCodigoMateriaChange}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                label="Nombre de materia"
+                id="nombreMateria"
+                variant="outlined"
+                fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                autoComplete="off"
+                value={nombreMateria}
+                onChange={handleNombreMateriaChange}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                label="Semestre"
+                id="semestre"
+                select
+                variant="outlined"
+                fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                value={semestre}
+                onChange={handleSemestreChange}
               >
-                {semestre._numeroSemestre}
-              </MenuItem>
-            ))}
-          </TextField>
-        </div>
-        <div>
-          <label htmlFor="carrera">Carrera</label>
-          <TextField
-            id="carrera"
-            select
-            variant="outlined"
-            value={carrera}
-            onChange={handleCarreraChange}
-          >
-            {carreras.map((carrera) => (
-              <MenuItem
-                key={carrera._codigoCarrera}
-                value={carrera._nombreCarrera}
+                {semestres.map((semestre) => (
+                  <MenuItem
+                    key={semestre._codigoSemestre}
+                    value={semestre._numeroSemestre}
+                  >
+                    {semestre._numeroSemestre}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                label="Carrera"
+                id="carrera"
+                select
+                variant="outlined"
+                fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                value={carrera}
+                onChange={handleCarreraChange}
               >
-                {carrera._nombreCarrera}
-              </MenuItem>
-            ))}
-          </TextField>
-        </div>
-        <div>
-          <label htmlFor="docente">Docente</label>
-          <TextField
-            id="docente"
-            select
-            variant="outlined"
-            value={docente}
-            onChange={handleDocenteChange}
-          >
-            {docentes.map((docente) => (
-              <MenuItem
-                key={docente._codigoDocente}
-                value={docente._codigoDocente}
+                {carreras.map((carrera) => (
+                  <MenuItem
+                    key={carrera._codigoCarrera}
+                    value={carrera._nombreCarrera}
+                  >
+                    {carrera._nombreCarrera}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                label="Docente"
+                id="docente"
+                select
+                variant="outlined"
+                fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                value={docente}
+                onChange={handleDocenteChange}
               >
-                {docente._primerNombre} {docente._primerApellido}
-              </MenuItem>
-            ))}
-          </TextField>
-        </div>
-        <div className="modal-buttons">
-          <Button variant="contained" onClick={handleClose}>
-            Cancelar
-          </Button>
-          <Button variant="contained" color="primary" onClick={handleAccept}>
-            Aceptar
-          </Button>
+                {docentes.map((docente) => (
+                  <MenuItem
+                    key={docente._codigoDocente}
+                    value={docente._codigoDocente}
+                  >
+                    {docente._primerNombre} {docente._primerApellido}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleAccept}
+              >
+                Aceptar
+              </Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button variant="contained" onClick={handleClose}>
+                Cancelar
+              </Button>
+            </Grid>
+          </Grid>
         </div>
       </div>
     </Modal>
