@@ -112,7 +112,7 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
   };
 
   return (
-    <Modal open={open} onClose={handleClose}>
+    <Modal open={open} onClose={handleClose} className="modal-form">
       <div className="modal-container">
         <h2>Registro de docente</h2>
 

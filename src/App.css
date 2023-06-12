@@ -76,3 +76,9 @@
   width: 200px; /* Puedes ajustar el valor de width según tus necesidades */
   height: 60px;
 }
+
+.modal-form{
+  margin: 1rem 10rem 3rem 10rem;
+  padding: 0 2rem ;
+  background-color: rgba(45, 45, 56, 0.761);
+}
