@@ -174,21 +174,7 @@ function App() {
     console.log(docentes);
   };
 
-  const handleMostrarSemestres = () => {
-    handleOpenModalSemestre();
-  };
 
-  const handleMostrarMaterias = () => {
-    handleOpenModalMateria();
-  };
-
-  const handleMostrarCarreras = () => {
-    handleOpenModalCarrera();
-  };
-
-  const handleMostrarDocentes = () => {
-    handleOpenModalDocente();
-  };
 
   return (
     <div className="App">

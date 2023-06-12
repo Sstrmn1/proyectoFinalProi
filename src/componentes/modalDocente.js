@@ -15,7 +15,7 @@ import {
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
 import Docente from "../clases/docente";
-import { startOfDay, format } from "date-fns";
+import { startOfDay, format, parse, isValid } from "date-fns";
 
 const ModalDocente = ({ open, handleClose, addDocente }) => {
   const [codigoDocente, setCodigoDocente] = useState("");
@@ -56,8 +56,14 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
   };
 
   const handleFechaNacimientoChange = (date) => {
-    setFechaNacimiento(date);
+    if (isValid(date)) {
+      const formattedDate = format(date, "dd/MM/yyyy");
+      setFechaNacimiento(formattedDate);
+    } else {
+      console.error("Fecha de nacimiento no válida");
+    }
   };
+
 
   const handleProfesionChange = (event) => {
     setProfesion(event.target.value);
@@ -200,7 +206,7 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
                   label="Masculino"
                 />
                 <FormControlLabel
-                  value="otror"
+                  value="otro"
                   control={<Radio />}
                   label="Otro"
                 />
@@ -209,20 +215,18 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
             <Grid item xs={6}>
               <DatePicker
                 label="Fecha de nacimiento"
-                value={fechaNacimiento}
+                date={fechaNacimiento ? parse(fechaNacimiento, "dd/MM/yyyy", new Date()) : null}  // Utiliza parse para analizar el valor de fecha
                 onChange={handleFechaNacimientoChange}
                 renderInput={(props) => (
                   <TextField
                     {...props}
                     variant="outlined"
-                    value={
-                      fechaNacimiento
-                        ? fechaNacimiento.toLocaleDateString()
-                        : ""
-                    }
+                    value={fechaNacimiento ? fechaNacimiento : ""}
                   />
                 )}
               />
+
+
             </Grid>
             <Grid item xs={6}>
               <label>Profesión</label>
