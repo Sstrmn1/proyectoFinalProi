@@ -108,6 +108,27 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
     addDocente(docente);
 
     handleClose();
+    resetFields();
+  };
+
+  const handleCancel = () => {
+    handleClose();
+    resetFields();
+  };
+
+  const resetFields = () => {
+    setCodigoDocente("");
+    setPrimerNombre("");
+    setSegundoNombre("");
+    setPrimerApellido("");
+    setSegundoApellido("");
+    setGenero("femenino");
+    setFechaNacimiento("");
+    setProfesion("");
+    setLicenciatura(false);
+    setDiplomado(false);
+    setMaestria(false);
+    setPhd(false);
   };
 
   return (
@@ -285,7 +306,7 @@ const ModalDocente = ({ open, handleClose, addDocente }) => {
               </Button>
             </Grid>
             <Grid item xs={6}>
-              <Button variant="contained" onClick={handleClose}>
+              <Button variant="contained" onClick={handleCancel}>
                 Cancelar
               </Button>
             </Grid>
